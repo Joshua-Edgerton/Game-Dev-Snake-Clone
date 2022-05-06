@@ -34,14 +34,25 @@ public class Food : MonoBehaviour
             {
                 isSuper = true;
                 superEffect.Play();
+                Invoke("ChangeFoodSuper", 0.1f);
             }
             else
             {
                 isSuper = false;
                 superEffect.Clear();
                 superEffect.Pause();
+                Invoke("ChangeFoodNormal", 0.1f);
             }
         }
 
+    }
+
+    private void ChangeFoodSuper()
+    {
+        this.tag = "SuperFood";
+    }
+    private void ChangeFoodNormal()
+    {
+        this.tag = "Food";
     }
 }
