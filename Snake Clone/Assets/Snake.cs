@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Snake : MonoBehaviour
@@ -7,13 +8,20 @@ public class Snake : MonoBehaviour
     private List<Transform> _segments = new List<Transform>();
     public Transform segmentPrefab;
     public int initialSize = 2;
+    public string segmentDisplay;
+    public Text segmentCounter;
     private void Start()
     {
         ResetState();
+        segmentDisplay = (initialSize - 1).ToString();
+        segmentCounter.text = segmentDisplay;
     }
 
     private void Update()
     {
+        segmentDisplay = (_segments.Count - 1).ToString();
+        segmentCounter.text = segmentDisplay;
+
         if (Input.GetKeyDown(KeyCode.W) && _direction != Vector2.down)
         {
             _direction = Vector2.up;
