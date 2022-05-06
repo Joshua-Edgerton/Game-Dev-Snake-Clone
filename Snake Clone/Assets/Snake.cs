@@ -6,7 +6,6 @@ public class Snake : MonoBehaviour
     private Vector2 _direction = Vector2.right;
     private List<Transform> _segments = new List<Transform>();
     public Transform segmentPrefab;
-
     public int initialSize = 2;
     private void Start()
     {
@@ -68,18 +67,25 @@ public class Snake : MonoBehaviour
         this.transform.position = Vector3.zero;
     }
 
-    private void Grow()
+    private void Grow(int superAmount)
     {
-        Transform segment = Instantiate(this.segmentPrefab);
-        segment.position = _segments[_segments.Count - 1].position;
-        _segments.Add(segment);
+        for (int i = superAmount; i > 0; i--)
+        {
+            Transform segment = Instantiate(this.segmentPrefab);
+            segment.position = _segments[_segments.Count - 1].position;
+            _segments.Add(segment);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Food")
         {
-            Grow();
+            Grow(1);
+        }
+        else if (other.tag == "SuperFood")
+        {
+            Grow(3);
         }
         else if (other.tag == "Obstacle")
         {
