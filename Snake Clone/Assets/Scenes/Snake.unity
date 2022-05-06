@@ -229,7 +229,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 6708360372960691349}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -246,6 +247,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridArea: {fileID: 582842904}
+  isSuper: 0
+  superChance: 50
+  superEffect: {fileID: 6708360372960691351}
 --- !u!1 &505604357
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +547,7 @@ GameObject:
   - component: {fileID: 1078399676}
   - component: {fileID: 1078399680}
   m_Layer: 0
-  m_Name: SnakeHead
+  m_Name: Snake Head
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -674,6 +678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   segmentPrefab: {fileID: 1756597778319448078, guid: 7a4e6876c4f3ba345b4ddd61c1eff6d4, type: 3}
+  initialSize: 2
 --- !u!1 &1265752145
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,3 +1006,82 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &6708360372960691347
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 256082872}
+    m_Modifications:
+    - target: {fileID: 577235116972525363, guid: 8f463b6b5ed62c84a90cb66ea3a1fc6b, type: 3}
+      propertyPath: m_Name
+      value: Super Effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663746826524633720, guid: 8f463b6b5ed62c84a90cb66ea3a1fc6b, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663746826524633720, guid: 8f463b6b5ed62c84a90cb66ea3a1fc6b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.20000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663746826524633720, guid: 8f463b6b5ed62c84a90cb66ea3a1fc6b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.20000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663746826524633720, guid: 8f463b6b5ed62c84a90cb66ea3a1fc6b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663746826524633720, guid: 8f463b6b5ed62c84a90cb66ea3a1fc6b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663746826524633720, guid: 8f463b6b5ed62c84a90cb66ea3a1fc6b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663746826524633720, guid: 8f463b6b5ed62c84a90cb66ea3a1fc6b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663746826524633720, guid: 8f463b6b5ed62c84a90cb66ea3a1fc6b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663746826524633720, guid: 8f463b6b5ed62c84a90cb66ea3a1fc6b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663746826524633720, guid: 8f463b6b5ed62c84a90cb66ea3a1fc6b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663746826524633720, guid: 8f463b6b5ed62c84a90cb66ea3a1fc6b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663746826524633720, guid: 8f463b6b5ed62c84a90cb66ea3a1fc6b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663746826524633720, guid: 8f463b6b5ed62c84a90cb66ea3a1fc6b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046587696250237160, guid: 8f463b6b5ed62c84a90cb66ea3a1fc6b, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8f463b6b5ed62c84a90cb66ea3a1fc6b, type: 3}
+--- !u!4 &6708360372960691349 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3663746826524633720, guid: 8f463b6b5ed62c84a90cb66ea3a1fc6b, type: 3}
+  m_PrefabInstance: {fileID: 6708360372960691347}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6708360372960691351 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6046587696250237160, guid: 8f463b6b5ed62c84a90cb66ea3a1fc6b, type: 3}
+  m_PrefabInstance: {fileID: 6708360372960691347}
+  m_PrefabAsset: {fileID: 0}

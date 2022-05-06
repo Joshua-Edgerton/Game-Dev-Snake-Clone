@@ -3,6 +3,9 @@ using UnityEngine;
 public class Food : MonoBehaviour
 {
     public BoxCollider2D gridArea;
+    public bool isSuper = false;
+    public int superChance = 50;
+    public ParticleSystem superEffect;
 
     private void Start()
     {
@@ -24,6 +27,20 @@ public class Food : MonoBehaviour
         if (other.tag == "Player")
         {
             RandomizePosition();
+            int dropRange = Random.Range(1, 100);
+            Debug.Log(dropRange);
+            superEffect.Clear();
+            if (dropRange < superChance)
+            {
+                isSuper = true;
+                superEffect.Play();
+            }
+            else
+            {
+                isSuper = false;
+                superEffect.Clear();
+                superEffect.Pause();
+            }
         }
 
     }
