@@ -7,13 +7,7 @@ public class MousePos2D : MonoBehaviour
     public Camera mainCamera;
     public Transform aim;
     public GameObject crosshair;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
     void Update()
     {
         Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
