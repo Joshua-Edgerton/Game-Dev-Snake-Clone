@@ -7,6 +7,7 @@ public class Abilities : MonoBehaviour
     public Snake snakeScript;
     public GameObject venomBall;
     public bool isVenomSpit = true;
+    public int venomSpitCost = 1;
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class Abilities : MonoBehaviour
         if (isVenomSpit)
         {
             VenomSpit();
+            snakeScript.DestroySegments(venomSpitCost);
         }
     }
     public void VenomSpit()

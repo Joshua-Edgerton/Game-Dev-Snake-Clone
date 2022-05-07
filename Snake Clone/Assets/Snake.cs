@@ -51,11 +51,6 @@ public class Snake : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && segmentTotal > 1)
         {
             abilitiesScript.PlayAbility();
-
-            //Instantiate(venomBall, aim.transform.position, aim.transform.rotation);
-            Destroy(_segments[_segments.Count - 1].gameObject);
-            _segments.RemoveAt(_segments.Count - 1);
-
         }
 
     }
@@ -116,6 +111,14 @@ public class Snake : MonoBehaviour
         else if (other.tag == "Obstacle")
         {
             ResetState();
+        }
+    }
+    public void DestroySegments(int segDestroyAmount)
+    {
+        for (int i = segDestroyAmount; i > 0; i--)
+        {
+            Destroy(_segments[_segments.Count - 1].gameObject);
+            _segments.RemoveAt(_segments.Count - 1);
         }
     }
 
