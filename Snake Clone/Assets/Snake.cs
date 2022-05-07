@@ -5,11 +5,18 @@ using UnityEngine;
 public class Snake : MonoBehaviour
 {
     private Vector2 _direction = Vector2.right;
+    public Abilities abilitiesScript;
     private List<Transform> _segments = new List<Transform>();
     public Transform segmentPrefab;
+    public Transform target;
     public int initialSize = 2;
     public string segmentDisplay;
     public Text segmentCounter;
+    public int segmentTotal;
+    public int prevSize;
+    public Camera mainCamera;
+    public GameObject aim;
+    public GameObject venomBall;
     private void Start()
     {
         ResetState();
@@ -21,6 +28,10 @@ public class Snake : MonoBehaviour
     {
         segmentDisplay = (_segments.Count - 1).ToString();
         segmentCounter.text = segmentDisplay;
+        segmentTotal = (_segments.Count - 1);
+        Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPosition.z = 0f;
+        aim.transform.right = mouseWorldPosition - transform.position;
 
         if (Input.GetKeyDown(KeyCode.W) && _direction != Vector2.down)
         {
@@ -38,6 +49,16 @@ public class Snake : MonoBehaviour
         {
             _direction = Vector2.right;
         }
+        if (Input.GetMouseButtonDown(0) && segmentTotal > 1)
+        {
+            prevSize = segmentTotal;
+
+            Instantiate(venomBall, aim.transform.position, aim.transform.rotation);
+            Destroy(_segments[_segments.Count - 1].gameObject);
+            _segments.RemoveAt(_segments.Count - 1);
+
+        }
+
     }
 
     private void FixedUpdate()
@@ -53,8 +74,6 @@ public class Snake : MonoBehaviour
             Mathf.Round(this.transform.position.y) + _direction.y,
             0.0f
             );
-
-
     }
 
     private void ResetState()
