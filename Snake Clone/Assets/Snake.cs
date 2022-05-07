@@ -8,12 +8,10 @@ public class Snake : MonoBehaviour
     public Abilities abilitiesScript;
     private List<Transform> _segments = new List<Transform>();
     public Transform segmentPrefab;
-    public Transform target;
     public int initialSize = 2;
     public string segmentDisplay;
     public Text segmentCounter;
     public int segmentTotal;
-    public int prevSize;
     public Camera mainCamera;
     public GameObject aim;
     public GameObject venomBall;
@@ -22,6 +20,7 @@ public class Snake : MonoBehaviour
         ResetState();
         segmentDisplay = (initialSize - 1).ToString();
         segmentCounter.text = segmentDisplay;
+        abilitiesScript = GameObject.Find("Snake").GetComponent<Abilities>();
     }
 
     private void Update()
@@ -51,9 +50,9 @@ public class Snake : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0) && segmentTotal > 1)
         {
-            prevSize = segmentTotal;
+            abilitiesScript.PlayAbility();
 
-            Instantiate(venomBall, aim.transform.position, aim.transform.rotation);
+            //Instantiate(venomBall, aim.transform.position, aim.transform.rotation);
             Destroy(_segments[_segments.Count - 1].gameObject);
             _segments.RemoveAt(_segments.Count - 1);
 
