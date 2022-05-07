@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
+    //Snake Movement
     private Vector2 _direction = Vector2.right;
+    //Script connection
     public Abilities abilitiesScript;
+    //List creation
     private List<Transform> _segments = new List<Transform>();
     public Transform segmentPrefab;
+    //Initial snake segments at start
     public int initialSize = 2;
+    //Segment counters
     public string segmentDisplay;
     public Text segmentCounter;
     public int segmentTotal;
+    //Mouse position tools and "aim" transform for projectiles
     public Camera mainCamera;
     public GameObject aim;
-    public GameObject venomBall;
+
     private void Start()
     {
         ResetState();
@@ -25,11 +31,14 @@ public class Snake : MonoBehaviour
 
     private void Update()
     {
+        //Segment info
         segmentDisplay = (_segments.Count - 1).ToString();
         segmentCounter.text = segmentDisplay;
         segmentTotal = (_segments.Count - 1);
+        //Mouse position info
         Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPosition.z = 0f;
+        //Makes the "aim" game object look towards the mouse position
         aim.transform.right = mouseWorldPosition - transform.position;
 
         if (Input.GetKeyDown(KeyCode.W) && _direction != Vector2.down)
@@ -57,7 +66,6 @@ public class Snake : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         for (int i = _segments.Count - 1; i > 0; i--)
         {
             _segments[i].position = _segments[i - 1].position;
@@ -76,15 +84,12 @@ public class Snake : MonoBehaviour
         {
             Destroy(_segments[i].gameObject);
         }
-
         _segments.Clear();
         _segments.Add(this.transform);
-
         for (int i = 1; i < this.initialSize; i++)
         {
             _segments.Add(Instantiate(this.segmentPrefab));
         }
-
         this.transform.position = Vector3.zero;
     }
 
