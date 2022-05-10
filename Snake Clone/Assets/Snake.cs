@@ -12,7 +12,7 @@ public class Snake : MonoBehaviour
     private List<Transform> _segments = new List<Transform>();
     public Transform segmentPrefab;
     //Initial snake segments at start
-    public int initialSize = 2;
+    public int initialSize = 4;
     //Segment counters
     public string segmentDisplay;
     public Text segmentCounter;
@@ -24,8 +24,12 @@ public class Snake : MonoBehaviour
     private void Start()
     {
         ResetState();
+        // Makes cursor invisible
+        Cursor.visible = false;
+        // Sets UI to show segment count
         segmentDisplay = (initialSize - 1).ToString();
         segmentCounter.text = segmentDisplay;
+        //Finds the script "Abilities" attached to the gameobject called "Snake"
         abilitiesScript = GameObject.Find("Snake").GetComponent<Abilities>();
     }
 
