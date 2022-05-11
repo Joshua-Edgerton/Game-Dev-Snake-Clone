@@ -84,7 +84,7 @@ public class Snake : MonoBehaviour
             );
     }
 
-    private void ResetState()
+    public void ResetState()
     {
         for (int i = 1; i < _segments.Count; i++)
         {
@@ -119,7 +119,7 @@ public class Snake : MonoBehaviour
         {
             Grow(3);
         }
-        else if (other.tag == "Obstacle")
+        else if (other.tag == "Obstacle" || other.tag == "Enemy")
         {
             ResetState();
         }
