@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 495216694327201322}
   - component: {fileID: 2560850843364691379}
   - component: {fileID: 8469624454426267643}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Venom Ball
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
