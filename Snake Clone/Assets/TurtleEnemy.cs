@@ -45,38 +45,30 @@ public class TurtleEnemy : MonoBehaviour
 
     }
 
-    IEnumerator RandomDirection()
+    public void RandomDirection()
     {
-        while (true)
+        if (_direction == Vector2.up || _direction == Vector2.down)
         {
-            yield return new WaitForSeconds(randomDirectionTimer);
-            if (_direction == Vector2.up || _direction == Vector2.down)
+            if (randomDirectionChoice == 1)
             {
-                if (randomDirectionChoice == 1)
-                {
-                    TurnRight();
-                }
-                else if (randomDirectionChoice == 2)
-                {
-                    TurnLeft();
-                }
-                StopCoroutine(RandomDirection());
+                TurnRight();
             }
-            else if (_direction == Vector2.left || _direction == Vector2.right)
+            else if (randomDirectionChoice == 2)
             {
-                if (randomDirectionChoice == 1)
-                {
-                    TurnUp();
-                }
-                else if (randomDirectionChoice == 2)
-                {
-                    TurnDownForWhat();
-                }
-                StopCoroutine(RandomDirection());
-                randomDirectionChoice = 0;
+                TurnLeft();
             }
-            StopCoroutine(RandomDirection());
-
+        }
+        else if (_direction == Vector2.left || _direction == Vector2.right)
+        {
+            if (randomDirectionChoice == 1)
+            {
+                TurnUp();
+            }
+            else if (randomDirectionChoice == 2)
+            {
+                TurnDownForWhat();
+            }
+            randomDirectionChoice = 0;
         }
     }
     //Ienumerator that controls update speed for anything within "while" loop
@@ -108,7 +100,7 @@ public class TurtleEnemy : MonoBehaviour
         {
             randomDirectionTimer = Random.Range(4f, 11f);
             randomDirectionChoice = Random.Range(1, 3);
-            StartCoroutine(RandomDirection());
+            Invoke("RandomDirection", randomDirectionTimer);
 
             if (_direction == Vector2.left)
             {
