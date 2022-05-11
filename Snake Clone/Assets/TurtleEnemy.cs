@@ -11,6 +11,8 @@ public class TurtleEnemy : MonoBehaviour
     public int randomDirectionChoice = 1;
     public Enemy enemyScript;
     public int turtleHealth = 30;
+    public int amountHealedForFood = 10;
+    public int amountHealedForSuperFood = 20;
     void Start()
     {
         //Coroutine for custom update speedS
@@ -122,6 +124,14 @@ public class TurtleEnemy : MonoBehaviour
             {
                 TurnUp();
             }
+        }
+        if (other.tag == "Food")
+        {
+            enemyScript.Heal(amountHealedForFood);
+        }
+        if (other.tag == "SuperFood")
+        {
+            enemyScript.Heal(amountHealedForSuperFood);
         }
     }
 

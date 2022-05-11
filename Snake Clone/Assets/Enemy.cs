@@ -29,11 +29,21 @@ public class Enemy : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
-        Debug.Log("Current health is " + currentHealth);
-        Debug.Log("Max health is " + enemyHealthMax);
     }
     public void KillEnemy()
     {
         Destroy(gameObject);
+    }
+    public void Heal(int healAmount)
+    {
+        if (currentHealth < enemyHealthMax - healAmount)
+        {
+            currentHealth += healAmount;
+            healthBar.SetHealth(currentHealth);
+        }
+        else
+        {
+            currentHealth = enemyHealthMax;
+        }
     }
 }
