@@ -11,15 +11,26 @@ public class Spawner : MonoBehaviour
     public int enemySpawnTimer = 10;
     public Vector3 randomSpawnPoint;
     public GameObject spawnStarting;
+    private float countDownTimer;
+    public float spawnWarningTime = 2;
     void Start()
     {
-        StartCoroutine(EnemySpawn());
         Invoke("FirstSpawn", 1f);
+        countDownTimer = enemySpawnTimer;
     }
 
     void Update()
     {
-
+        if (currentEnemyCount < maxEnemies)
+        {
+            countDownTimer -= Time.deltaTime;
+            Debug.Log(countDownTimer + "countdown");
+            if (countDownTimer <= 0)
+            {
+                EnemySpawn();
+                countDownTimer = enemySpawnTimer + spawnWarningTime;
+            }
+        }
     }
     private void RandomSpawnGenerator()
     {
@@ -30,27 +41,23 @@ public class Spawner : MonoBehaviour
     }
 
 
-    IEnumerator EnemySpawn()
+    public void EnemySpawn()
     {
-        while (true)
+        if (currentEnemyCount < maxEnemies)
         {
-            yield return new WaitForSeconds(enemySpawnTimer);
-            if (currentEnemyCount < maxEnemies)
-            {
-                int randomEnemy = Random.Range(0, _enemies.Count);
-                RandomSpawnGenerator();
-                Instantiate(spawnStarting, randomSpawnPoint, this.transform.rotation);
-                Invoke("Spawn", 2f);
-                //int enemyPicker = Random.Range(0, 100);
-            }
-
+            int randomEnemy = Random.Range(0, _enemies.Count);
+            RandomSpawnGenerator();
+            Instantiate(spawnStarting, randomSpawnPoint, this.transform.rotation);
+            Invoke("Spawn", spawnWarningTime);
+            //int enemyPicker = Random.Range(0, 100);
         }
+
     }
     public void FirstSpawn()
     {
         RandomSpawnGenerator();
         Instantiate(spawnStarting, randomSpawnPoint, this.transform.rotation);
-        Invoke("Spawn", 2f);
+        Invoke("Spawn", spawnWarningTime);
     }
     private void Spawn()
     {

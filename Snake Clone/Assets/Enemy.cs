@@ -33,6 +33,7 @@ public class Enemy : MonoBehaviour
     public void KillEnemy()
     {
         Destroy(gameObject);
+        spawnerScript.currentEnemyCount -= 1;
     }
     public void Heal(int healAmount)
     {
