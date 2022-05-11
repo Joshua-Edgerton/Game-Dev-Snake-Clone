@@ -1788,6 +1788,11 @@ MonoBehaviour:
   _enemies:
   - {fileID: 2342311449559490471, guid: 4af450f60df21194db8e351ac1601308, type: 3}
   spawnArea: {fileID: 1083911494}
+  maxEnemies: 2
+  currentEnemyCount: 0
+  enemySpawnTimer: 10
+  randomSpawnPoint: {x: 0, y: 0, z: 0}
+  spawnStarting: {fileID: 4623563555170528787, guid: b949878e2fa4952478aa99dd691aa3d0, type: 3}
 --- !u!1 &1987828826
 GameObject:
   m_ObjectHideFlags: 0

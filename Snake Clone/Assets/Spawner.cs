@@ -10,9 +10,11 @@ public class Spawner : MonoBehaviour
     public int currentEnemyCount = 0;
     public int enemySpawnTimer = 10;
     public Vector3 randomSpawnPoint;
+    public GameObject spawnStarting;
     void Start()
     {
         StartCoroutine(EnemySpawn());
+        Invoke("FirstSpawn", 1f);
     }
 
     void Update()
@@ -27,6 +29,7 @@ public class Spawner : MonoBehaviour
         randomSpawnPoint = new Vector3(Mathf.Round(x), Mathf.Round(y), 0.0f);
     }
 
+
     IEnumerator EnemySpawn()
     {
         while (true)
@@ -36,11 +39,22 @@ public class Spawner : MonoBehaviour
             {
                 int randomEnemy = Random.Range(0, _enemies.Count);
                 RandomSpawnGenerator();
-                Instantiate(_enemies[randomEnemy], randomSpawnPoint, this.transform.rotation);
+                Instantiate(spawnStarting, randomSpawnPoint, this.transform.rotation);
+                Invoke("Spawn", 2f);
                 //int enemyPicker = Random.Range(0, 100);
-
             }
 
         }
+    }
+    private void FirstSpawn()
+    {
+        RandomSpawnGenerator();
+        Instantiate(spawnStarting, randomSpawnPoint, this.transform.rotation);
+        Invoke("Spawn", 2f);
+    }
+    private void Spawn()
+    {
+        int randomEnemy = Random.Range(0, _enemies.Count);
+        Instantiate(_enemies[randomEnemy], randomSpawnPoint, this.transform.rotation);
     }
 }
