@@ -4,22 +4,20 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public int enemyHealth;
     public BoxCollider2D enemyArea;
     void Start()
     {
-        RandomizePosition();
+
     }
     void Update()
     {
 
     }
-    private void RandomizePosition()
+
+    public void DamageEnemy(int damage)
     {
-        Bounds bounds = this.enemyArea.bounds;
-
-        float x = Random.Range(bounds.min.x, bounds.max.x);
-        float y = Random.Range(bounds.min.y, bounds.max.y);
-
-        this.transform.position = new Vector3(Mathf.Round(x), Mathf.Round(y), 0.0f);
+        enemyHealth -= damage;
+        Debug.Log(enemyHealth);
     }
 }

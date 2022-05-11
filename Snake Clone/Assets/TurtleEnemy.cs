@@ -9,11 +9,15 @@ public class TurtleEnemy : MonoBehaviour
     public float enemySpeed = 0.5f;
     public float randomDirectionTimer = 3;
     public int randomDirectionChoice = 1;
+    public Enemy enemyScript;
+    public int turtleHealth = 30;
     void Start()
     {
         RandomizePosition();
         //Coroutine for custom update speed
         StartCoroutine(TurtleUpdate());
+        enemyScript = this.GetComponent<Enemy>();
+        enemyScript.enemyHealth = turtleHealth
 
     }
     void Update()
@@ -86,6 +90,10 @@ public class TurtleEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.tag == "PlayerProjectile")
+        {
+
+        }
         if (other.tag == "Obstacle")
         {
             randomDirectionTimer = Random.Range(4f, 11f);
