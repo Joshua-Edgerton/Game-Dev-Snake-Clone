@@ -2153,17 +2153,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyArea: {fileID: 1083911494}
-<<<<<<< Updated upstream
   enemySpeed: 0.5
   randomDirectionTimer: 3
   randomDirectionChoice: 1
   enemyScript: {fileID: 0}
   turtleHealth: 30
-=======
-  enemySpeed: 0.1
-  randomDirectionTimer: 3
-  randomDirectionChoice: 1
->>>>>>> Stashed changes
 --- !u!61 &1654302144
 BoxCollider2D:
   m_ObjectHideFlags: 0
