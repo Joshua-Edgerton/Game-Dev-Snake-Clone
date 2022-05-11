@@ -6,18 +6,34 @@ public class TurtleEnemy : MonoBehaviour
 {
     public BoxCollider2D enemyArea;
     private Vector2 _direction = Vector2.left;
-    public float enemySpeed = 0.5f;
+    public float enemySpeed = 0.1f;
     public float randomDirectionTimer = 3;
     public int randomDirectionChoice = 1;
     public Enemy enemyScript;
     public int turtleHealth = 30;
     void Start()
     {
-        RandomizePosition();
-        //Coroutine for custom update speed
+        //Coroutine for custom update speedS
         StartCoroutine(TurtleUpdate());
         enemyScript = this.GetComponent<Enemy>();
         enemyScript.enemyHealth = turtleHealth;
+        int randomDirectionStart = Random.Range(0, 5);
+        if (randomDirectionStart == 1)
+        {
+            TurnUp();
+        }
+        else if (randomDirectionStart == 2)
+        {
+            TurnLeft();
+        }
+        else if (randomDirectionStart == 3)
+        {
+            TurnUp();
+        }
+        else if (randomDirectionStart == 4)
+        {
+            TurnDownForWhat();
+        }
 
     }
     void Update()
@@ -78,23 +94,13 @@ public class TurtleEnemy : MonoBehaviour
 
     }
 
-    private void RandomizePosition()
-    {
-        Bounds bounds = this.enemyArea.bounds;
-
-        float x = Random.Range(bounds.min.x, bounds.max.x);
-        float y = Random.Range(bounds.min.y, bounds.max.y);
-
-        this.transform.position = new Vector3(Mathf.Round(x), Mathf.Round(y), 0.0f);
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "PlayerProjectile")
         {
 
         }
-        if (other.tag == "Obstacle")
+        if (other.tag == "Obstacle" || other.tag == "Enemy")
         {
             randomDirectionTimer = Random.Range(4f, 11f);
             randomDirectionChoice = Random.Range(1, 3);
