@@ -16,7 +16,7 @@ public class TurtleEnemy : MonoBehaviour
         //Coroutine for custom update speedS
         StartCoroutine(TurtleUpdate());
         enemyScript = this.GetComponent<Enemy>();
-        enemyScript.enemyHealth = turtleHealth;
+        enemyScript.enemyHealthMax = turtleHealth;
         int randomDirectionStart = Random.Range(0, 5);
         if (randomDirectionStart == 1)
         {

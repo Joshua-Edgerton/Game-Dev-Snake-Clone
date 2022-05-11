@@ -9,6 +9,7 @@ TagManager:
   - SuperFood
   - PlayerProjectile
   - Enemy
+  - Enemy Obstacle
   layers:
   - Default
   - TransparentFX
