@@ -100,7 +100,7 @@ public class TurtleEnemy : MonoBehaviour
         {
 
         }
-        if (other.tag == "Obstacle" || other.tag == "Enemy")
+        if (other.tag == "Obstacle" || other.tag == "Enemy" || other.tag == "Enemy Obstacle")
         {
             randomDirectionTimer = Random.Range(4f, 11f);
             randomDirectionChoice = Random.Range(1, 3);
