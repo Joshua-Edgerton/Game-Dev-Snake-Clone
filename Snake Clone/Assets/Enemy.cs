@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour
         else
         {
             currentHealth = enemyHealthMax;
+            healthBar.SetHealth(currentHealth);
         }
     }
 }

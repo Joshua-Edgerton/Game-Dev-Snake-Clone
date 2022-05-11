@@ -13,8 +13,10 @@ public class TurtleEnemy : MonoBehaviour
     public int turtleHealth = 30;
     public int amountHealedForFood = 10;
     public int amountHealedForSuperFood = 20;
+    public Spawner spawnScript;
     void Start()
     {
+        spawnScript = GameObject.Find("Enemy Manager").GetComponent<Spawner>();
         //Coroutine for custom update speedS
         StartCoroutine(TurtleUpdate());
         enemyScript = this.GetComponent<Enemy>();
@@ -132,6 +134,14 @@ public class TurtleEnemy : MonoBehaviour
         if (other.tag == "SuperFood")
         {
             enemyScript.Heal(amountHealedForSuperFood);
+        }
+        if (other.tag == "Bounds")
+        {
+            Destroy(gameObject);
+            if (spawnScript.currentEnemyCount! >= spawnScript.maxEnemies)
+            {
+                spawnScript.FirstSpawn();
+            }
         }
     }
 
