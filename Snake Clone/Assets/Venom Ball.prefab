@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 495216694327201323}
   - component: {fileID: 495216694327201322}
   - component: {fileID: 2560850843364691379}
-  - component: {fileID: 6831124036753426839}
   m_Layer: 0
   m_Name: Venom Ball
   m_TagString: PlayerProjectile
@@ -74,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 9
+  m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0.7523467, g: 0.9056604, b: 0, a: 1}
   m_FlipX: 0
@@ -197,8 +196,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 20
-  isVenomball: 1
-  venomballDamage: 3
 --- !u!58 &2560850843364691379
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -215,24 +212,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
---- !u!50 &6831124036753426839
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495216694327201325}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
