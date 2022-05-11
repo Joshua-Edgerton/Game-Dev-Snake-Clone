@@ -12,7 +12,7 @@ public class Snake : MonoBehaviour
     private List<Transform> _segments = new List<Transform>();
     public Transform segmentPrefab;
     //Initial snake segments at start
-    public int initialSize = 2;
+    public int initialSize = 4;
     //Segment counters
     public string segmentDisplay;
     public Text segmentCounter;
@@ -24,8 +24,12 @@ public class Snake : MonoBehaviour
     private void Start()
     {
         ResetState();
+        // Makes cursor invisible
+        Cursor.visible = false;
+        // Sets UI to show segment count
         segmentDisplay = (initialSize - 1).ToString();
         segmentCounter.text = segmentDisplay;
+        //Finds the script "Abilities" attached to the gameobject called "Snake"
         abilitiesScript = GameObject.Find("Snake").GetComponent<Abilities>();
     }
 
@@ -60,17 +64,19 @@ public class Snake : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && segmentTotal > 1)
         {
             abilitiesScript.PlayAbility();
+            //Debug.Log("Clicked");
         }
 
     }
 
     private void FixedUpdate()
     {
+        Debug.Log(segmentTotal);
         for (int i = _segments.Count - 1; i > 0; i--)
         {
             _segments[i].position = _segments[i - 1].position;
         }
-
+        //Also snake movement, rounded so that it moves 1 block at a time, thanks to fixedupdate also
         this.transform.position = new Vector3(
             Mathf.Round(this.transform.position.x) + _direction.x,
             Mathf.Round(this.transform.position.y) + _direction.y,

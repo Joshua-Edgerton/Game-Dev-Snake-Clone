@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1756597778319448078}
   - component: {fileID: 5074408204436515919}
   - component: {fileID: 8879843376453276929}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SnakeSegment
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 0.48850012, b: 0, a: 1}
+  m_Color: {r: 0.18823531, g: 0.91372555, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
