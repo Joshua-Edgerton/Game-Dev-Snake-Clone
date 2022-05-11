@@ -4,23 +4,36 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int enemyHealth = 100;
+    public int enemyHealthMax;
+    public int currentHealth;
     public BoxCollider2D enemyArea;
     public Spawner spawnerScript;
+    public HealthBar healthBar;
     void Start()
     {
         spawnerScript = GameObject.Find("Enemy Manager").GetComponent<Spawner>();
         spawnerScript.currentEnemyCount = spawnerScript.currentEnemyCount += 1;
         Debug.Log(spawnerScript.currentEnemyCount + " current enemies");
+        currentHealth = enemyHealthMax;
+        healthBar.SetMaxHealth(enemyHealthMax);
     }
     void Update()
     {
-
+        if (currentHealth <= 0)
+        {
+            KillEnemy();
+        }
     }
 
     public void DamageEnemy(int damage)
     {
-        enemyHealth -= damage;
-        Debug.Log(enemyHealth);
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+        Debug.Log("Current health is " + currentHealth);
+        Debug.Log("Max health is " + enemyHealthMax);
+    }
+    public void KillEnemy()
+    {
+        Destroy(gameObject);
     }
 }
