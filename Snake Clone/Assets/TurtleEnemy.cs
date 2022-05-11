@@ -9,11 +9,16 @@ public class TurtleEnemy : MonoBehaviour
     public float enemySpeed = 0.5f;
     public float randomDirectionTimer = 3;
     public int randomDirectionChoice = 1;
+    public Enemy enemyScript;
+    public int turtleHealth = 30;
+
     void Start()
     {
         RandomizePosition();
         //Coroutine for custom update speed
         StartCoroutine(TurtleUpdate());
+        enemyScript = this.GetComponent<Enemy>();
+        //enemyScript.enemyHealth = turtleHealth;
 
     }
     void Update()
@@ -109,30 +114,30 @@ public class TurtleEnemy : MonoBehaviour
                 TurnUp();
             }
         }
+        if (other.tag == "PlayerProjectile")
+        {
+
+        }
     }
 
     private void TurnRight()
     {
         this.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
         _direction = Vector2.right;
-        Debug.Log("Turned Right");
     }
     private void TurnLeft()
     {
         this.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         _direction = Vector2.left;
-        Debug.Log("Turned Left");
     }
     private void TurnUp()
     {
         this.transform.rotation = Quaternion.Euler(0f, 0f, -90f);
         _direction = Vector2.up;
-        Debug.Log("Turned Up");
     }
     private void TurnDownForWhat()
     {
         this.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
         _direction = Vector2.down;
-        Debug.Log("Turned Down");
     }
 }
