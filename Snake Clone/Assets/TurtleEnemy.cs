@@ -123,24 +123,20 @@ public class TurtleEnemy : MonoBehaviour
     {
         this.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
         _direction = Vector2.right;
-        Debug.Log("Turned Right");
     }
     private void TurnLeft()
     {
         this.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         _direction = Vector2.left;
-        Debug.Log("Turned Left");
     }
     private void TurnUp()
     {
         this.transform.rotation = Quaternion.Euler(0f, 0f, -90f);
         _direction = Vector2.up;
-        Debug.Log("Turned Up");
     }
     private void TurnDownForWhat()
     {
         this.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
         _direction = Vector2.down;
-        Debug.Log("Turned Down");
     }
 }

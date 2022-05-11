@@ -28,7 +28,6 @@ public class Food : MonoBehaviour
         {
             RandomizePosition();
             int dropRange = Random.Range(1, 100);
-            Debug.Log(dropRange);
             superEffect.Clear();
             if (dropRange < superChance)
             {

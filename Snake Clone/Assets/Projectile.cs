@@ -31,7 +31,6 @@ public class Projectile : MonoBehaviour
         }
         if (other.tag == "Obstacle")
         {
-            Debug.Log("touched obstacle");
             Destroy(gameObject);
         }
     }

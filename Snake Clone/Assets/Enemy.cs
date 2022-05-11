@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int enemyHealth;
+    public int enemyHealth = 100;
     public BoxCollider2D enemyArea;
     void Start()
     {
