@@ -46,7 +46,7 @@ public class Spawner : MonoBehaviour
 
         }
     }
-    private void FirstSpawn()
+    public void FirstSpawn()
     {
         RandomSpawnGenerator();
         Instantiate(spawnStarting, randomSpawnPoint, this.transform.rotation);
