@@ -74,7 +74,7 @@ public class Snake : MonoBehaviour
         {
             _segments[i].position = _segments[i - 1].position;
         }
-
+        //Also snake movement, rounded so that it moves 1 block at a time, thanks to fixedupdate also
         this.transform.position = new Vector3(
             Mathf.Round(this.transform.position.x) + _direction.x,
             Mathf.Round(this.transform.position.y) + _direction.y,
