@@ -23,12 +23,12 @@ public class Abilities : MonoBehaviour
         {
             VenomSpit();
             snakeScript.DestroySegments(venomSpitCost);
-            Debug.Log("Venom spit attempted, destroy segments");
+            //Debug.Log("Venom spit attempted, destroy segments");
         }
     }
     public void VenomSpit()
     {
         Instantiate(venomBall, snakeScript.aim.transform.position, snakeScript.aim.transform.rotation);
-        Debug.Log("Instantiate venom");
+        //Debug.Log("Instantiate venom");
     }
 }
