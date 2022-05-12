@@ -8,12 +8,15 @@ public class Enemy : MonoBehaviour
     public int currentHealth;
     public BoxCollider2D enemyArea;
     public Spawner spawnerScript;
+    public StatsManager statsManagerScript;
     public HealthBar healthBar;
+    public int expToGive;
+    public int scoreToGive;
     void Start()
     {
+        statsManagerScript = GameObject.Find("Level Manager").GetComponent<StatsManager>();
         spawnerScript = GameObject.Find("Enemy Manager").GetComponent<Spawner>();
         spawnerScript.currentEnemyCount = spawnerScript.currentEnemyCount += 1;
-        Debug.Log(spawnerScript.currentEnemyCount + " current enemies");
         currentHealth = enemyHealthMax;
         healthBar.SetMaxHealth(enemyHealthMax);
     }
@@ -34,6 +37,8 @@ public class Enemy : MonoBehaviour
     {
         Destroy(gameObject);
         spawnerScript.currentEnemyCount -= 1;
+        statsManagerScript.KillExp(expToGive);
+        statsManagerScript.KillScore(scoreToGive);
     }
     public void Heal(int healAmount)
     {

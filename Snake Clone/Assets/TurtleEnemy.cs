@@ -15,9 +15,11 @@ public class TurtleEnemy : MonoBehaviour
     public int amountHealedForSuperFood = 20;
     public Spawner spawnScript;
     public int expWorth = 2;
-    public int scoreWorth = 20;
+    public int scoreWorth = 200;
     void Start()
     {
+        enemyScript.expToGive = expWorth;
+        enemyScript.scoreToGive = scoreWorth;
         spawnScript = GameObject.Find("Enemy Manager").GetComponent<Spawner>();
         //Coroutine for custom update speedS
         StartCoroutine(TurtleUpdate());
@@ -100,7 +102,7 @@ public class TurtleEnemy : MonoBehaviour
         }
         if (other.tag == "Obstacle" || other.tag == "Enemy" || other.tag == "Enemy Obstacle")
         {
-            
+
             randomDirectionTimer = Random.Range(4f, 11f);
             randomDirectionChoice = Random.Range(1, 3);
             Invoke("RandomDirection", randomDirectionTimer);

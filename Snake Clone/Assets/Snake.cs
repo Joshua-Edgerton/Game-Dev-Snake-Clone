@@ -65,14 +65,12 @@ public class Snake : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && segmentTotal > 1)
         {
             abilitiesScript.PlayAbility();
-            //Debug.Log("Clicked");
         }
 
     }
 
     private void FixedUpdate()
     {
-        Debug.Log(segmentTotal);
         for (int i = _segments.Count - 1; i > 0; i--)
         {
             _segments[i].position = _segments[i - 1].position;
@@ -87,6 +85,7 @@ public class Snake : MonoBehaviour
 
     public void ResetState()
     {
+        statsManagerScript.LostLife();
         for (int i = 1; i < _segments.Count; i++)
         {
             Destroy(_segments[i].gameObject);
@@ -102,7 +101,7 @@ public class Snake : MonoBehaviour
 
     private void Grow(int superAmount)
     {
-        statsManagerScript.SegmentExp(superAmount);
+        statsManagerScript.SegmentScore(superAmount);
         for (int i = superAmount; i > 0; i--)
         {
             Transform segment = Instantiate(this.segmentPrefab);
