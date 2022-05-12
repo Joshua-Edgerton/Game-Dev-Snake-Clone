@@ -102,6 +102,7 @@ public class Snake : MonoBehaviour
 
     private void Grow(int superAmount)
     {
+        statsManagerScript.SegmentExp(superAmount);
         for (int i = superAmount; i > 0; i--)
         {
             Transform segment = Instantiate(this.segmentPrefab);

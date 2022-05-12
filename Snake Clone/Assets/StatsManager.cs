@@ -10,15 +10,21 @@ public class StatsManager : MonoBehaviour
     public Text expCounter;
     public Text spawnCounter;
     public GameObject spawnCounterUI;
-    // Start is called before the first frame update
+
+    public int totalExp;
+
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
+        scoreCounter.text = totalExp.ToString();
+    }
 
+    public void SegmentExp(int segmentsMade)
+    {
+        totalExp += (segmentsMade * 10);
     }
 }
