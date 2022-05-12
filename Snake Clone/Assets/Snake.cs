@@ -15,11 +15,11 @@ public class Snake : MonoBehaviour
     public int initialSize = 4;
     //Segment counters
     public string segmentDisplay;
-    public Text segmentCounter;
     public int segmentTotal;
     //Mouse position tools and "aim" transform for projectiles
     public Camera mainCamera;
     public GameObject aim;
+    public StatsManager statsManagerScript;
 
     private void Start()
     {
@@ -28,16 +28,17 @@ public class Snake : MonoBehaviour
         Cursor.visible = false;
         // Sets UI to show segment count
         segmentDisplay = (initialSize - 1).ToString();
-        segmentCounter.text = segmentDisplay;
+        statsManagerScript.segmentCounter.text = segmentDisplay;
         //Finds the script "Abilities" attached to the gameobject called "Snake"
         abilitiesScript = GameObject.Find("Snake").GetComponent<Abilities>();
+        statsManagerScript = GameObject.Find("Level Manager").GetComponent<StatsManager>();
     }
 
     private void Update()
     {
         //Segment info
         segmentDisplay = (_segments.Count - 1).ToString();
-        segmentCounter.text = segmentDisplay;
+        statsManagerScript.segmentCounter.text = segmentDisplay;
         segmentTotal = (_segments.Count - 1);
         //Mouse position info
         Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);

@@ -13,10 +13,14 @@ public class Spawner : MonoBehaviour
     public GameObject spawnStarting;
     private float countDownTimer;
     public float spawnWarningTime = 2;
+    public float spawnCountdownUI;
+    public StatsManager statsManagerScript;
     void Start()
     {
         Invoke("FirstSpawn", 1f);
         countDownTimer = enemySpawnTimer;
+        spawnCountdownUI = enemySpawnTimer;
+        statsManagerScript = GameObject.Find("Level Manager").GetComponent<StatsManager>();
     }
 
     void Update()
@@ -24,13 +28,20 @@ public class Spawner : MonoBehaviour
         if (currentEnemyCount < maxEnemies)
         {
             countDownTimer -= Time.deltaTime;
-            Debug.Log(countDownTimer + "countdown");
+            if (countDownTimer >= 0 && countDownTimer < enemySpawnTimer)
+            {
+                spawnCountdownUI = Mathf.Round(countDownTimer);
+                statsManagerScript.spawnCounterUI.SetActive(true);
+                Debug.Log("countdown ui" + spawnCountdownUI);
+            }
             if (countDownTimer <= 0)
             {
                 EnemySpawn();
                 countDownTimer = enemySpawnTimer + spawnWarningTime;
+                statsManagerScript.spawnCounterUI.SetActive(false);
             }
         }
+        statsManagerScript.spawnCounter.text = spawnCountdownUI.ToString();
     }
     private void RandomSpawnGenerator()
     {
