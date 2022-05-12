@@ -32,7 +32,6 @@ public class Spawner : MonoBehaviour
             {
                 spawnCountdownUI = Mathf.Round(countDownTimer);
                 statsManagerScript.spawnCounterUI.SetActive(true);
-                Debug.Log("countdown ui" + spawnCountdownUI);
             }
             if (countDownTimer <= 0)
             {
