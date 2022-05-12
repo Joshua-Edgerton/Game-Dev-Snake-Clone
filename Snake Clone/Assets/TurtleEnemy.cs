@@ -14,6 +14,8 @@ public class TurtleEnemy : MonoBehaviour
     public int amountHealedForFood = 10;
     public int amountHealedForSuperFood = 20;
     public Spawner spawnScript;
+    public int expWorth = 2;
+    public int scoreWorth = 20;
     void Start()
     {
         spawnScript = GameObject.Find("Enemy Manager").GetComponent<Spawner>();
