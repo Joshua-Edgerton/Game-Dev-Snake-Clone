@@ -16,6 +16,10 @@ public class StatsManager : MonoBehaviour
     public int startingLives = 3;
     public int maxLives = 3;
     public int currentLives;
+    public int levelLength = 120;
+    public float levelLengthCounter;
+    public Text levelLengthUI;
+    public int numberOfMinutes;
 
     public int totalExp;
     public int totalScore;
@@ -24,12 +28,16 @@ public class StatsManager : MonoBehaviour
     {
         currentLives = startingLives;
         ResetLives();
+        levelLengthCounter = levelLength;
     }
 
     void Update()
     {
         scoreCounter.text = totalScore.ToString();
         expCounter.text = totalExp.ToString();
+        levelLengthCounter -= Time.deltaTime;
+        levelLengthUI.text = (Mathf.Round(levelLengthCounter) / 60).ToString("0") + ":" + (Mathf.Round(levelLengthCounter) % 60).ToString("00");
+
         if (currentLives == 0)
         {
             GameOver();
@@ -57,12 +65,12 @@ public class StatsManager : MonoBehaviour
 
     public void ResetLives()
     {
-        for (int i = 1; i < _lives.Count; i++)
+        for (int i = 0; i < _lives.Count; i++)
         {
             _lives[i].gameObject.SetActive(false);
         }
 
-        for (int i = 0; i < currentLives + 1; i++)
+        for (int i = 0; i < currentLives; i++)
         {
             _lives[i].gameObject.SetActive(true);
         }
