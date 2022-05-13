@@ -103,6 +103,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 963105145303607609}
+  enemy: {fileID: 0}
+  healthBarOffset: 0
 --- !u!1 &3444182193967743869
 GameObject:
   m_ObjectHideFlags: 0

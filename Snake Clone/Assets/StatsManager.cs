@@ -57,7 +57,7 @@ public class StatsManager : MonoBehaviour
 
     public void ResetLives()
     {
-        for (int i = 0; i < _lives.Count; i++)
+        for (int i = 1; i < _lives.Count; i++)
         {
             _lives[i].gameObject.SetActive(false);
         }

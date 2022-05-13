@@ -648,6 +648,11 @@ MonoBehaviour:
   randomDirectionChoice: 1
   enemyScript: {fileID: 2342311449559490522}
   turtleHealth: 30
+  amountHealedForFood: 10
+  amountHealedForSuperFood: 20
+  spawnScript: {fileID: 0}
+  expWorth: 2
+  scoreWorth: 200
 --- !u!114 &2342311449559490522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,7 +669,10 @@ MonoBehaviour:
   currentHealth: 0
   enemyArea: {fileID: 0}
   spawnerScript: {fileID: 0}
+  statsManagerScript: {fileID: 0}
   healthBar: {fileID: 1485702221073541094}
+  expToGive: 0
+  scoreToGive: 0
 --- !u!50 &2342311449559490525
 Rigidbody2D:
   serializedVersion: 4
@@ -792,7 +800,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6302737411765818503}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2342311449559490523}
@@ -913,6 +921,14 @@ PrefabInstance:
       propertyPath: enemy
       value: 
       objectReference: {fileID: 2342311449559490471}
+    - target: {fileID: 8319088198013369022, guid: 3f40b3f6e0edf9b4a9941aaa22747bf6, type: 3}
+      propertyPath: isTurtle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319088198013369022, guid: 3f40b3f6e0edf9b4a9941aaa22747bf6, type: 3}
+      propertyPath: enemyHealthPoint
+      value: 
+      objectReference: {fileID: 6302737411765818503}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f40b3f6e0edf9b4a9941aaa22747bf6, type: 3}
 --- !u!224 &7945951107012329620 stripped
