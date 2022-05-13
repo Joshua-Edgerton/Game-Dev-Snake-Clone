@@ -26,7 +26,7 @@ public class PorcupineEnemy : MonoBehaviour
         StartCoroutine(PauseThenShootCounter());
         enemyScript = this.GetComponent<Enemy>();
         enemyScript.enemyHealthMax = porcupineHealth;
-        int randomDirectionStart = Random.Range(0, 5);
+        int randomDirectionStart = Random.Range(1, 5);
         if (randomDirectionStart == 1)
         {
             TurnUp();
