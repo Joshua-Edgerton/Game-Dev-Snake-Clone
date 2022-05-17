@@ -120,7 +120,7 @@ public class Snake : MonoBehaviour
         {
             Grow(3);
         }
-        else if (other.tag == "Obstacle" || other.tag == "Enemy")
+        else if (other.tag == "Obstacle" || other.tag == "Enemy" || other.tag == "Enemy Projectile" || other.tag == "SnakeBody")
         {
             ResetState();
         }
