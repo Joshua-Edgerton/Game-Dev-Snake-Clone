@@ -6,7 +6,9 @@ public class PorcupineEnemy : MonoBehaviour
 {
     public BoxCollider2D enemyArea;
     private Vector2 _direction = Vector2.left;
+    public float enemySpeedDefault = 0.5f;
     public float enemySpeed = 0.5f;
+    public float enemySpeedPaused = 3;
     public float randomDirectionTimer = 3;
     public int randomDirectionChoice = 1;
     public Enemy enemyScript;
@@ -16,6 +18,8 @@ public class PorcupineEnemy : MonoBehaviour
     public Spawner spawnScript;
     public int expWorth = 4;
     public int scoreWorth = 500;
+    public List<Transform> _spineLocations = new List<Transform>();
+    public GameObject spikeProjectile;
     void Start()
     {
         enemyScript.expToGive = expWorth;
@@ -144,6 +148,7 @@ public class PorcupineEnemy : MonoBehaviour
         }
         if (other.tag == "Bounds")
         {
+            Debug.Log("Enemy went past bounds");
             Destroy(gameObject);
             if (spawnScript.currentEnemyCount! >= spawnScript.maxEnemies)
             {
@@ -174,11 +179,18 @@ public class PorcupineEnemy : MonoBehaviour
     }
     private void PauseThenShoot()
     {
-        enemySpeed = 1000;
+        enemySpeed = enemySpeedPaused;
         Invoke("Shoot", 2);
+        Invoke("Shoot", 2.5f);
+        Invoke("Shoot", 3);
     }
     private void Shoot()
     {
-
+        enemySpeed = enemySpeedDefault;
+        for (int i = 0; i < _spineLocations.Count; i++)
+        {
+            Instantiate(spikeProjectile, _spineLocations[i].transform.position, _spineLocations[i].transform.rotation);
+            //Instantiate(venomBall, snakeScript.aim.transform.position, snakeScript.aim.transform.rotation)
+        }
     }
 }

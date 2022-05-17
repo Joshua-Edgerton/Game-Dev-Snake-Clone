@@ -11,6 +11,8 @@ TagManager:
   - Enemy
   - Enemy Obstacle
   - Bounds
+  - EnemyProjectile
+  - SnakeBody
   layers:
   - Default
   - TransparentFX
@@ -20,9 +22,9 @@ TagManager:
   - UI
   - SnakeBody
   - PlayerProjectile
-  - 
-  - 
-  - 
+  - EnemyProjectile
+  - Porcupine
+  - Bounds
   - 
   - 
   - 
