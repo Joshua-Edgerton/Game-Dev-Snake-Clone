@@ -655,6 +655,8 @@ MonoBehaviour:
   scoreWorth: 200
   healthBarContainer: {fileID: 4745520438826555720}
   healthBarScript: {fileID: 1485702221073541094}
+  triggerCounter: 0
+  triggerTimer: 0.2
 --- !u!114 &2342311449559490522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,7 +696,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!1 &2342311449571237564
 GameObject:

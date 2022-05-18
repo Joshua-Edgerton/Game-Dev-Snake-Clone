@@ -26,18 +26,18 @@ public class HealthBar : MonoBehaviour
             }
             else
             {
-                heightAboveEnemy = 6;
+                heightAboveEnemy = 3.5f;
             }
         }
         else if (isTurtle)
         {
             if (isTurtleSideways)
             {
-                heightAboveEnemy = 3;
+                heightAboveEnemy = 2.5f;
             }
             else
             {
-                heightAboveEnemy = 6;
+                heightAboveEnemy = 3;
             }
         }
         else if (isBoar)

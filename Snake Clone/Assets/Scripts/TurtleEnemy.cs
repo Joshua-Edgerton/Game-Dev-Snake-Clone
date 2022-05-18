@@ -8,6 +8,8 @@ public class TurtleEnemy : MonoBehaviour
     private Vector2 _direction = Vector2.left;
     public float enemySpeed = 0.1f;
     public float randomDirectionTimer = 3;
+    public float randomDirectionDefault = 2;
+    public float randomDirectionCounter;
     public int randomDirectionChoice = 1;
     public Enemy enemyScript;
     public int turtleHealth = 30;
@@ -18,8 +20,11 @@ public class TurtleEnemy : MonoBehaviour
     public int scoreWorth = 200;
     public GameObject healthBarContainer;
     public HealthBar healthBarScript;
+    public float triggerCounter;
+    public float triggerTimer = 0.2f;
     void Start()
     {
+        randomDirectionCounter = randomDirectionDefault;
         healthBarScript = healthBarContainer.GetComponent<HealthBar>();
         enemyScript.expToGive = expWorth;
         enemyScript.scoreToGive = scoreWorth;
@@ -49,6 +54,14 @@ public class TurtleEnemy : MonoBehaviour
     }
     void Update()
     {
+        if (randomDirectionCounter > 0)
+        {
+            randomDirectionCounter -= Time.deltaTime;
+        }
+        if (triggerCounter > 0)
+        {
+            triggerCounter -= Time.deltaTime;
+        }
         if (_direction == Vector2.left || _direction == Vector2.right)
         {
             healthBarScript.isTurtleSideways = true;
@@ -114,26 +127,32 @@ public class TurtleEnemy : MonoBehaviour
         if (other.tag == "Obstacle" || other.tag == "Enemy" || other.tag == "Enemy Obstacle")
         {
 
-            randomDirectionTimer = Random.Range(4f, 11f);
+            randomDirectionTimer = Random.Range(2f, 6f);
             randomDirectionChoice = Random.Range(1, 3);
-            Invoke("RandomDirection", randomDirectionTimer);
+            if (randomDirectionCounter <= 0)
+            {
+                Invoke("RandomDirection", randomDirectionTimer);
+                randomDirectionCounter = randomDirectionDefault;
+                Debug.Log("Random Direction Invoked: " + randomDirectionTimer);
+            }
 
-            if (_direction == Vector2.left)
+            if (_direction == Vector2.left && triggerCounter <= 0)
             {
                 TurnRight();
             }
-            else if (_direction == Vector2.right)
+            else if (_direction == Vector2.right && triggerCounter <= 0)
             {
                 TurnLeft();
             }
-            else if (_direction == Vector2.up)
+            else if (_direction == Vector2.up && triggerCounter <= 0)
             {
                 TurnDownForWhat();
             }
-            else if (_direction == Vector2.down)
+            else if (_direction == Vector2.down && triggerCounter <= 0)
             {
                 TurnUp();
             }
+            triggerCounter = triggerTimer;
         }
         if (other.tag == "Food")
         {
