@@ -17,7 +17,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - SnakeHead
   - Water
   - UI
   - SnakeBody
@@ -25,7 +25,7 @@ TagManager:
   - EnemyProjectile
   - Porcupine
   - Bounds
-  - 
+  - Boar
   - 
   - 
   - 

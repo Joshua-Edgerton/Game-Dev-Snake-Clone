@@ -11,6 +11,7 @@ public class HealthBar : MonoBehaviour
     public float heightAboveEnemy = 3;
     public bool isPorcupine = false;
     public bool isTurtle = false;
+    public bool isBoar = false;
 
     private void Update()
     {

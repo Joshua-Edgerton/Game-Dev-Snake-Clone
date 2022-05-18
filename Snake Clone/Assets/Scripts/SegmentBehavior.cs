@@ -18,9 +18,9 @@ public class SegmentBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Enemy" || other.tag == "Obstacle" || other.tag == "EnemyProjectile")
+        if (other.tag == "Enemy" || other.tag == "Obstacle")
         {
-            Debug.Log("Hit enemy, obstacle, or projectile");
+            Debug.Log("Hit enemy, obstacle");
             snakeScript.ResetState();
         }
     }
