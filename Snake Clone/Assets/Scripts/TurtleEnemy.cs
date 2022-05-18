@@ -133,7 +133,6 @@ public class TurtleEnemy : MonoBehaviour
             {
                 Invoke("RandomDirection", randomDirectionTimer);
                 randomDirectionCounter = randomDirectionDefault;
-                Debug.Log("Random Direction Invoked: " + randomDirectionTimer);
             }
 
             if (_direction == Vector2.left && triggerCounter <= 0)

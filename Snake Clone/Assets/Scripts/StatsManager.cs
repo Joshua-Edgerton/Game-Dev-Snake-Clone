@@ -23,6 +23,8 @@ public class StatsManager : MonoBehaviour
 
     public int totalExp;
     public int totalScore;
+    public bool pauseTimer = false;
+    public bool gamePaused = false;
 
     void Start()
     {
@@ -35,8 +37,19 @@ public class StatsManager : MonoBehaviour
     {
         scoreCounter.text = totalScore.ToString();
         expCounter.text = totalExp.ToString();
-        levelLengthCounter -= Time.deltaTime;
-        levelLengthUI.text = (Mathf.Round(levelLengthCounter) / 60).ToString("0") + ":" + (Mathf.Round(levelLengthCounter) % 60).ToString("00");
+        if (!pauseTimer)
+        {
+            levelLengthCounter -= Time.deltaTime;
+        }
+        //levelLengthUI.text = (Mathf.Round(levelLengthCounter) / 60).ToString("00") + ":" + (Mathf.Round(levelLengthCounter) % 60).ToString("00");
+        int minutes = Mathf.FloorToInt(levelLengthCounter / 60F);
+        int seconds = Mathf.FloorToInt(levelLengthCounter - minutes * 60);
+        levelLengthUI.text = string.Format("{0:0}:{1:00}", minutes, seconds);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame();
+        }
 
         if (currentLives == 0)
         {
@@ -75,8 +88,22 @@ public class StatsManager : MonoBehaviour
             _lives[i].gameObject.SetActive(true);
         }
     }
+    public void PauseGame()
+    {
+        if (gamePaused == false)
+        {
+            Time.timeScale = 0;
+            gamePaused = true;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            gamePaused = false;
+        }
+    }
+
     public void GameOver()
     {
-        Debug.Log("Game Over");
+
     }
 }

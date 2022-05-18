@@ -21,7 +21,7 @@ public class EnemyProjectile : MonoBehaviour
         if (other.tag == "Player" || other.tag == "SnakeBody")
         {
             Debug.Log("enemy projectile hit snake head or body");
-            other.GetComponent<Snake>().ResetState();
+            other.GetComponent<Snake>().DieThenChooseSpawn();
             Destroy(this.gameObject);
         }
         if (other.tag == "Obstacle")
