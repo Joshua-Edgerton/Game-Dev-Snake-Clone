@@ -20,6 +20,10 @@ public class Snake : MonoBehaviour
     public Camera mainCamera;
     public GameObject aim;
     public StatsManager statsManagerScript;
+    public GameObject crosshair;
+    public bool choseSpawnLocation = true;
+    public Vector3 currentMousePosition;
+    public bool invulnerableSpawn = false;
 
     private void Start()
     {
@@ -45,6 +49,8 @@ public class Snake : MonoBehaviour
         mouseWorldPosition.z = 0f;
         //Makes the "aim" game object look towards the mouse position
         aim.transform.right = mouseWorldPosition - transform.position;
+        currentMousePosition = mouseWorldPosition;
+        Debug.Log("spawn: " + invulnerableSpawn);
 
         if (Input.GetKeyDown(KeyCode.W) && _direction != Vector2.down)
         {
@@ -66,7 +72,10 @@ public class Snake : MonoBehaviour
         {
             abilitiesScript.PlayAbility();
         }
-
+        if (Input.GetMouseButtonDown(0) && choseSpawnLocation == false && this.gameObject.transform.localScale.x != 1)
+        {
+            ChooseSpawn();
+        }
     }
 
     private void FixedUpdate()
@@ -98,6 +107,36 @@ public class Snake : MonoBehaviour
         }
         this.transform.position = Vector3.zero;
     }
+    public void DieThenChooseSpawn()
+    {
+        choseSpawnLocation = false;
+        statsManagerScript.pauseTimer = true;
+        //crosshair.SetActive(false);
+        statsManagerScript.LostLife();
+        for (int i = 1; i < _segments.Count; i++)
+        {
+            Destroy(_segments[i].gameObject);
+        }
+        _segments.Clear();
+        this.gameObject.transform.localScale = new Vector3(0, 0, 0);
+        invulnerableSpawn = true;
+    }
+    public void ChooseSpawn()
+    {
+        choseSpawnLocation = true;
+        invulnerableSpawn = true;
+        statsManagerScript.pauseTimer = false;
+        Debug.Log("Choose spawn - Called");
+
+        this.transform.position = currentMousePosition;
+        _segments.Add(this.transform);
+        for (int i = 1; i < this.initialSize; i++)
+        {
+            _segments.Add(Instantiate(this.segmentPrefab));
+        }
+        this.gameObject.transform.localScale = new Vector3(1, 1, 1);
+        Uninvulnerable();
+    }
 
     private void Grow(int superAmount)
     {
@@ -108,6 +147,14 @@ public class Snake : MonoBehaviour
             segment.position = _segments[_segments.Count - 1].position;
             _segments.Add(segment);
         }
+    }
+    private void Uninvulnerable()
+    {
+        invulnerableSpawn = false;
+    }
+    private void Invulnerable()
+    {
+        invulnerableSpawn = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -120,9 +167,16 @@ public class Snake : MonoBehaviour
         {
             Grow(3);
         }
-        else if (other.tag == "Obstacle" || other.tag == "Enemy" || other.tag == "Enemy Projectile" || other.tag == "SnakeBody")
+        else if (other.tag == "Obstacle" || other.tag == "Enemy" || other.tag == "Enemy Projectile")
         {
-            ResetState();
+            DieThenChooseSpawn();
+            Debug.Log("Snake hit obstacle: " + other.tag);
+
+        }
+        else if (other.tag == "SnakeBody" && invulnerableSpawn == false)
+        {
+            DieThenChooseSpawn();
+            Debug.Log("Snake hit obstacle: " + other.tag);
         }
     }
     public void DestroySegments(int segDestroyAmount)

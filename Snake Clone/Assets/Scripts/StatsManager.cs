@@ -50,7 +50,6 @@ public class StatsManager : MonoBehaviour
         {
             PauseGame();
         }
-        Debug.Log(gamePaused);
 
         if (currentLives == 0)
         {
@@ -105,6 +104,6 @@ public class StatsManager : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log("Game Over");
+
     }
 }
