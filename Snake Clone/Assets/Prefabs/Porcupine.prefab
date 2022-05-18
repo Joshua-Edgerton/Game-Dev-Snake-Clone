@@ -3759,7 +3759,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &6796896429549838978
 MonoBehaviour:
@@ -3774,8 +3774,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyArea: {fileID: 0}
-  enemySpeedDefault: 0.5
-  enemySpeed: 0.5
+  enemySpeedDefault: 0.2
+  enemySpeed: 0.2
   enemySpeedPaused: 3
   randomDirectionTimer: 3
   randomDirectionChoice: 1
@@ -3791,6 +3791,8 @@ MonoBehaviour:
   - {fileID: 2058621569}
   - {fileID: 1528963162}
   spikeProjectile: {fileID: 952217837231260657, guid: a6c90fd95ae064740b345f1addc1e6e9, type: 3}
+  healthBarContainer: {fileID: 4955437105490725774}
+  healthBarScript: {fileID: 1261008121352205600}
 --- !u!114 &2718046564505848656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4026,6 +4028,11 @@ PrefabInstance:
       objectReference: {fileID: 1772826326}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f40b3f6e0edf9b4a9941aaa22747bf6, type: 3}
+--- !u!1 &4955437105490725774 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2753504072857224208, guid: 3f40b3f6e0edf9b4a9941aaa22747bf6, type: 3}
+  m_PrefabInstance: {fileID: 7130137842901028766}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7736047360716558930 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 695982618754440652, guid: 3f40b3f6e0edf9b4a9941aaa22747bf6, type: 3}
@@ -4036,7 +4043,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8319088198013369022, guid: 3f40b3f6e0edf9b4a9941aaa22747bf6, type: 3}
   m_PrefabInstance: {fileID: 7130137842901028766}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4955437105490725774}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20202bfb0ba4ca54eba477e400728a95, type: 3}

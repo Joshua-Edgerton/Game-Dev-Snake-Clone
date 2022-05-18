@@ -10,18 +10,46 @@ public class HealthBar : MonoBehaviour
     public float healthBarOffset;
     public float heightAboveEnemy = 3;
     public bool isPorcupine = false;
+    public bool isPorcupineSideways = false;
     public bool isTurtle = false;
+    public bool isTurtleSideways = false;
     public bool isBoar = false;
+    public bool isBoarSideways = false;
 
     private void Update()
     {
         if (isPorcupine)
         {
-            heightAboveEnemy = 3.5f;
+            if (isPorcupineSideways)
+            {
+                heightAboveEnemy = 3;
+            }
+            else
+            {
+                heightAboveEnemy = 3.5f;
+            }
         }
         else if (isTurtle)
         {
-            heightAboveEnemy = 3;
+            if (isTurtleSideways)
+            {
+                heightAboveEnemy = 2.5f;
+            }
+            else
+            {
+                heightAboveEnemy = 3;
+            }
+        }
+        else if (isBoar)
+        {
+            if (isBoarSideways)
+            {
+                heightAboveEnemy = 3;
+            }
+            else
+            {
+                heightAboveEnemy = 6;
+            }
         }
         transform.eulerAngles = new Vector3(0, 0, 0);
         transform.position = new Vector3(enemy.transform.position.x, enemy.transform.position.y + healthBarOffset + heightAboveEnemy, 0);

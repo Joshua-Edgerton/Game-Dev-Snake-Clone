@@ -1334,6 +1334,8 @@ MonoBehaviour:
   timesCrossedSnakeUp: 0
   timesCrossedSnakeDown: 0
   hitWallAfterCharge: 0
+  healthBarContainer: {fileID: 6005762587857298761}
+  healthBarScript: {fileID: 440788433251900391}
 --- !u!114 &1757069334823925599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2000,7 +2002,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 695982618754440652, guid: 3f40b3f6e0edf9b4a9941aaa22747bf6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 695982618754440652, guid: 3f40b3f6e0edf9b4a9941aaa22747bf6, type: 3}
       propertyPath: m_LocalScale.y
@@ -2092,6 +2094,11 @@ PrefabInstance:
       objectReference: {fileID: 1772826326, guid: b5e5b29af2f1fd944ac202f37aad90da, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f40b3f6e0edf9b4a9941aaa22747bf6, type: 3}
+--- !u!1 &6005762587857298761 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2753504072857224208, guid: 3f40b3f6e0edf9b4a9941aaa22747bf6, type: 3}
+  m_PrefabInstance: {fileID: 8461885594005381465}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8990883174214794389 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 695982618754440652, guid: 3f40b3f6e0edf9b4a9941aaa22747bf6, type: 3}
@@ -2102,7 +2109,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8319088198013369022, guid: 3f40b3f6e0edf9b4a9941aaa22747bf6, type: 3}
   m_PrefabInstance: {fileID: 8461885594005381465}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 6005762587857298761}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20202bfb0ba4ca54eba477e400728a95, type: 3}

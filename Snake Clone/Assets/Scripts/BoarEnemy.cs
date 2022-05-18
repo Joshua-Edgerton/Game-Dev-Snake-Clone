@@ -25,9 +25,12 @@ public class BoarEnemy : MonoBehaviour
     public int timesCrossedSnakeDown;
     private Animator anim;
     public bool hitWallAfterCharge = false;
+    public GameObject healthBarContainer;
+    public HealthBar healthBarScript;
     // Start is called before the first frame update
     void Start()
     {
+        healthBarScript = healthBarContainer.GetComponent<HealthBar>();
         enemyScript.expToGive = expWorth;
         enemyScript.scoreToGive = scoreWorth;
         spawnScript = GameObject.Find("Enemy Manager").GetComponent<Spawner>();
@@ -36,18 +39,26 @@ public class BoarEnemy : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
         StartCoroutine(BoarUpdate());
         anim.SetBool("isCharging", false);
-
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.up) * 30f, Color.red);
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.down) * 30f, Color.red);
+        //Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.up) * 30f, Color.red);
+        //Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.down) * 30f, Color.red);
         LayerMask snakeMask = LayerMask.GetMask("SnakeHead");
         RaycastHit2D hitUp = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.up), 30f, snakeMask);
         RaycastHit2D hitDown = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.down), 30f, snakeMask);
+
+        if (_direction == Vector2.left || _direction == Vector2.right)
+        {
+            healthBarScript.isBoarSideways = true;
+        }
+        else
+        {
+            healthBarScript.isBoarSideways = false;
+        }
 
         if (raycastHitCounter > 0)
         {
