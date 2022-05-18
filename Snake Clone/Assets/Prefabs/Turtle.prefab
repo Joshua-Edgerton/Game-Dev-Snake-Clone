@@ -653,6 +653,8 @@ MonoBehaviour:
   spawnScript: {fileID: 0}
   expWorth: 2
   scoreWorth: 200
+  healthBarContainer: {fileID: 4745520438826555720}
+  healthBarScript: {fileID: 1485702221073541094}
 --- !u!114 &2342311449559490522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,6 +933,11 @@ PrefabInstance:
       objectReference: {fileID: 6302737411765818503}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f40b3f6e0edf9b4a9941aaa22747bf6, type: 3}
+--- !u!1 &4745520438826555720 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2753504072857224208, guid: 3f40b3f6e0edf9b4a9941aaa22747bf6, type: 3}
+  m_PrefabInstance: {fileID: 7488660376899542360}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7945951107012329620 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 695982618754440652, guid: 3f40b3f6e0edf9b4a9941aaa22747bf6, type: 3}
@@ -941,7 +948,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8319088198013369022, guid: 3f40b3f6e0edf9b4a9941aaa22747bf6, type: 3}
   m_PrefabInstance: {fileID: 7488660376899542360}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4745520438826555720}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20202bfb0ba4ca54eba477e400728a95, type: 3}

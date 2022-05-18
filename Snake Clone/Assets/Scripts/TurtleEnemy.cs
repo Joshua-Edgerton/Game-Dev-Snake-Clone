@@ -16,8 +16,11 @@ public class TurtleEnemy : MonoBehaviour
     public Spawner spawnScript;
     public int expWorth = 2;
     public int scoreWorth = 200;
+    public GameObject healthBarContainer;
+    public HealthBar healthBarScript;
     void Start()
     {
+        healthBarScript = healthBarContainer.GetComponent<HealthBar>();
         enemyScript.expToGive = expWorth;
         enemyScript.scoreToGive = scoreWorth;
         spawnScript = GameObject.Find("Enemy Manager").GetComponent<Spawner>();
@@ -46,6 +49,14 @@ public class TurtleEnemy : MonoBehaviour
     }
     void Update()
     {
+        if (_direction == Vector2.left || _direction == Vector2.right)
+        {
+            healthBarScript.isTurtleSideways = true;
+        }
+        else
+        {
+            healthBarScript.isTurtleSideways = false;
+        }
 
     }
 
