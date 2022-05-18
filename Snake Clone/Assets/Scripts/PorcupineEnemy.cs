@@ -110,10 +110,6 @@ public class PorcupineEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "PlayerProjectile")
-        {
-
-        }
         if (other.tag == "Obstacle" || other.tag == "Enemy" || other.tag == "Enemy Obstacle")
         {
 
