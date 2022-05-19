@@ -4,24 +4,38 @@ using UnityEngine;
 
 public class TurtleEnemy : MonoBehaviour
 {
+    [Header("Enemy Bounds")]
     public BoxCollider2D enemyArea;
+    [Space(1)]
+    [Header("Movement")]
     private Vector2 _direction = Vector2.left;
     public float enemySpeed = 0.1f;
     public float randomDirectionTimer = 3;
     public float randomDirectionDefault = 2;
     public float randomDirectionCounter;
     public int randomDirectionChoice = 1;
-    public Enemy enemyScript;
-    public int turtleHealth = 30;
-    public int amountHealedForFood = 10;
-    public int amountHealedForSuperFood = 20;
-    public Spawner spawnScript;
-    public int expWorth = 2;
-    public int scoreWorth = 200;
-    public GameObject healthBarContainer;
-    public HealthBar healthBarScript;
     public float triggerCounter;
     public float triggerTimer = 0.2f;
+    [Space(1)]
+    [Header("Script Links")]
+    public Enemy enemyScript;
+    public Spawner spawnScript;
+    public HealthBar healthBarScript;
+    [Space(1)]
+    [Header("Health/Stats/EXP")]
+    [Range(1, 100)]
+    public int turtleHealth = 30;
+    [Range(1, 100)]
+    public int amountHealedForFood = 10;
+    [Range(1, 100)]
+    public int amountHealedForSuperFood = 20;
+    [Range(1, 10)]
+    public int expWorth = 2;
+    [Range(100, 10000)]
+    public int scoreWorth = 200;
+    [Space(1)]
+    [Header("Game Objects")]
+    public GameObject healthBarContainer;
     void Start()
     {
         randomDirectionCounter = randomDirectionDefault;
@@ -29,7 +43,6 @@ public class TurtleEnemy : MonoBehaviour
         enemyScript.expToGive = expWorth;
         enemyScript.scoreToGive = scoreWorth;
         spawnScript = GameObject.Find("Enemy Manager").GetComponent<Spawner>();
-        //Coroutine for custom update speedS
         StartCoroutine(TurtleUpdate());
         enemyScript = this.GetComponent<Enemy>();
         enemyScript.enemyHealthMax = turtleHealth;

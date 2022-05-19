@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class SegmentBehavior : MonoBehaviour
 {
+    [Header("Script Links")]
     public Snake snakeScript;
+    [Space(1)]
+    [Header("Snake Growth 'animation'")]
     public float snakeGrowthStart = 0;
     void Start()
     {
@@ -13,11 +16,6 @@ public class SegmentBehavior : MonoBehaviour
         this.gameObject.transform.localScale = new Vector3(0, 0, 0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     IEnumerator SnakeSize()
     {
         while (true)

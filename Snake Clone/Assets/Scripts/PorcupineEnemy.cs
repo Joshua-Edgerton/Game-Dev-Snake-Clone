@@ -4,39 +4,52 @@ using UnityEngine;
 
 public class PorcupineEnemy : MonoBehaviour
 {
+    [Header("Enemy Bounds")]
     public BoxCollider2D enemyArea;
+    [Space(1)]
+    [Header("Script Links")]
+    public Enemy enemyScript;
+    public Spawner spawnScript;
+    public HealthBar healthBarScript;
+    [Space(1)]
+    [Header("Movement")]
     private Vector2 _direction = Vector2.left;
     public float enemySpeedDefault = 0.2f;
     public float enemySpeed = 0.2f;
     public float enemySpeedPaused = 3;
     public float randomDirectionTimer = 3;
     public int randomDirectionChoice = 1;
-    public Enemy enemyScript;
+    public float triggerCounter;
+    public float triggerTimer = 1;
+    [Space(1)]
+    [Header("Health/Stats/EXP")]
+    [Range(1, 100)]
     public int porcupineHealth = 80;
+    [Range(1, 100)]
     public int amountHealedForFood = 20;
+    [Range(1, 100)]
     public int amountHealedForSuperFood = 40;
-    public Spawner spawnScript;
+    [Range(1, 10)]
     public int expWorth = 4;
+    [Range(100, 10000)]
     public int scoreWorth = 500;
+    [Space(1)]
+    [Header("Game Objects")]
     public List<Transform> _spineLocations = new List<Transform>();
     public GameObject spikeProjectile;
     public GameObject healthBarContainer;
-    public HealthBar healthBarScript;
-
-    public float triggerCounter;
-    public float triggerTimer = 1;
     void Start()
     {
         healthBarScript = healthBarContainer.GetComponent<HealthBar>();
         enemyScript.expToGive = expWorth;
         enemyScript.scoreToGive = scoreWorth;
         spawnScript = GameObject.Find("Enemy Manager").GetComponent<Spawner>();
-        //Coroutine for custom update speedS
         StartCoroutine(PorcupineUpdate());
         StartCoroutine(PauseThenShootCounter());
         enemyScript = this.GetComponent<Enemy>();
         enemyScript.enemyHealthMax = porcupineHealth;
         int randomDirectionStart = Random.Range(1, 5);
+
         if (randomDirectionStart == 1)
         {
             TurnUp();
@@ -53,8 +66,8 @@ public class PorcupineEnemy : MonoBehaviour
         {
             TurnDownForWhat();
         }
-
     }
+
     void Update()
     {
         if (triggerCounter > 0)
@@ -69,7 +82,6 @@ public class PorcupineEnemy : MonoBehaviour
         {
             healthBarScript.isPorcupineSideways = false;
         }
-
     }
 
     public void RandomDirection()
@@ -98,7 +110,7 @@ public class PorcupineEnemy : MonoBehaviour
             randomDirectionChoice = 0;
         }
     }
-    //Ienumerator that controls update speed for anything within "while" loop
+
     IEnumerator PorcupineUpdate()
     {
         while (true)
@@ -204,7 +216,6 @@ public class PorcupineEnemy : MonoBehaviour
         for (int i = 0; i < _spineLocations.Count; i++)
         {
             Instantiate(spikeProjectile, _spineLocations[i].transform.position, _spineLocations[i].transform.rotation);
-            //Instantiate(venomBall, snakeScript.aim.transform.position, snakeScript.aim.transform.rotation)
         }
     }
 }

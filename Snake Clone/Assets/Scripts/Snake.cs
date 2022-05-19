@@ -4,26 +4,31 @@ using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
-    //Snake Movement
+    [Header("Player Movement and Aim")]
     private Vector2 _direction = Vector2.right;
-    //Script connection
+    public Camera mainCamera;
+    public Vector3 currentMousePosition;
+    public GameObject aim;
+    public GameObject crosshair;
+    [Space(1)]
+    [Header("Script Links")]
     public Abilities abilitiesScript;
-    //List creation
-    private List<Transform> _segments = new List<Transform>();
+    public StatsManager statsManagerScript;
+    [Space(1)]
+    [Header("Game Objects and Transforms")]
     public Transform segmentPrefab;
-    //Initial snake segments at start
+    [Space(1)]
+    [Header("Snake Stats")]
     public int initialSize = 4;
-    //Segment counters
     public string segmentDisplay;
     public int segmentTotal;
-    //Mouse position tools and "aim" transform for projectiles
-    public Camera mainCamera;
-    public GameObject aim;
-    public StatsManager statsManagerScript;
-    public GameObject crosshair;
+    [Space(1)]
+    [Header("Spawn Variables")]
     public bool choseSpawnLocation = true;
-    public Vector3 currentMousePosition;
     public bool invulnerableSpawn = false;
+    [Space(1)]
+    [Header("Lists")]
+    private List<Transform> _segments = new List<Transform>();
 
     private void Start()
     {
