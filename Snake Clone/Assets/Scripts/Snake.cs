@@ -10,6 +10,7 @@ public class Snake : MonoBehaviour
     public Vector3 currentMousePosition;
     public GameObject aim;
     public GameObject crosshair;
+    public GameObject crosshairWhenChoosingSpawn;
     [Space(1)]
     [Header("Script Links")]
     public Abilities abilitiesScript;
@@ -125,6 +126,8 @@ public class Snake : MonoBehaviour
         _segments.Clear();
         this.gameObject.transform.localScale = new Vector3(0, 0, 0);
         invulnerableSpawn = true;
+        crosshair.gameObject.SetActive(false);
+        crosshairWhenChoosingSpawn.SetActive(true);
     }
     public void ChooseSpawn()
     {
@@ -141,6 +144,8 @@ public class Snake : MonoBehaviour
         }
         this.gameObject.transform.localScale = new Vector3(1, 1, 1);
         Uninvulnerable();
+        crosshair.gameObject.SetActive(true);
+        crosshairWhenChoosingSpawn.SetActive(false);
     }
 
     private void Grow(int superAmount)
