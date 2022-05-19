@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Abilities : MonoBehaviour
 {
+    [Header("Script Links")]
     public Snake snakeScript;
+    [Space(1)]
+    [Header("Game Objects")]
     public GameObject venomBall;
+    [Space(1)]
+    [Header("Venom Spit Ability")]
     public bool isVenomSpit = true;
     public int venomSpitCost = 1;
 
-    private void Awake()
-    {
-
-    }
     private void Start()
     {
         snakeScript = GameObject.Find("Snake").GetComponent<Snake>();
@@ -23,12 +24,10 @@ public class Abilities : MonoBehaviour
         {
             VenomSpit();
             snakeScript.DestroySegments(venomSpitCost);
-            //Debug.Log("Venom spit attempted, destroy segments");
         }
     }
     public void VenomSpit()
     {
         Instantiate(venomBall, snakeScript.aim.transform.position, snakeScript.aim.transform.rotation);
-        //Debug.Log("Instantiate venom");
     }
 }

@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [Header("Speed and Movement")]
+    [Range(1, 100)]
     public int projectileSpeed = 30;
+    [Space(1)]
+    [Header("General Ability Variables")]
     private int abilityDamage = 1;
+    [Space(1)]
+    [Header("Projectile Type/Damage")]
     public bool isVenomball;
+    [Range(1, 50)]
     public int venomballDamage = 3;
 
     private void Start()

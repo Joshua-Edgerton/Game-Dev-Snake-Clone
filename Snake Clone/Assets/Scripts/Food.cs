@@ -2,9 +2,15 @@ using UnityEngine;
 
 public class Food : MonoBehaviour
 {
+    [Header("Bounds")]
     public BoxCollider2D gridArea;
+    [Space(1)]
+    [Header("SuperFood Variables")]
     public bool isSuper = false;
+    [Range(1, 100)]
     public int superChance = 50;
+    [Space(1)]
+    [Header("Particle Effects")]
     public ParticleSystem superEffect;
 
     private void Start()

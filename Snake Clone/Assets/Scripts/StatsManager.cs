@@ -5,26 +5,34 @@ using UnityEngine.UI;
 
 public class StatsManager : MonoBehaviour
 {
+    [Header("UI Text")]
     public Text segmentCounter;
     public Text scoreCounter;
     public Text expCounter;
     public Text spawnCounter;
     public GameObject spawnCounterUI;
+    [Space(1)]
+    [Header("Lists")]
     public List<Transform> _lives = new List<Transform>();
+    [Space(1)]
+    [Header("Life Sprites/Controls")]
     public GameObject lifeSprite;
     public int lifeSpriteAdjustment = 0;
     public int startingLives = 3;
     public int maxLives = 3;
     public int currentLives;
+    [Space(1)]
+    [Header("Level Adjustments")]
     public int levelLength = 120;
     public float levelLengthCounter;
     public Text levelLengthUI;
     public int numberOfMinutes;
-
-    public int totalExp;
-    public int totalScore;
     public bool pauseTimer = false;
     public bool gamePaused = false;
+    [Space(1)]
+    [Header("Total Stats")]
+    public int totalExp;
+    public int totalScore;
 
     void Start()
     {

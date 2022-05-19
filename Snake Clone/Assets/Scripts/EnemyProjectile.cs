@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour
 {
+    [Header("Speed and Movement")]
     public int projectileSpeed = 30;
+    [Space(1)]
+    [Header("Type of Projectile")]
     public bool isSpike;
 
-    private void Start()
-    {
-
-    }
     void Update()
     {
         this.transform.Translate(Vector2.right * projectileSpeed * Time.deltaTime);

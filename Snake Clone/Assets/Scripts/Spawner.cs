@@ -4,17 +4,27 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public List<GameObject> _enemies = new List<GameObject>();
+    [Header("Script Links")]
+    public StatsManager statsManagerScript;
+    [Space(1)]
+    [Header("Bounds")]
     public BoxCollider2D spawnArea;
+    [Space(1)]
+    [Header("Lists")]
+    public List<GameObject> _enemies = new List<GameObject>();
+    [Space(1)]
+    [Header("Enemy Control/Spawning")]
     public int maxEnemies = 2;
     public int currentEnemyCount = 0;
     public int enemySpawnTimer = 10;
     public Vector3 randomSpawnPoint;
-    public GameObject spawnStarting;
     private float countDownTimer;
     public float spawnWarningTime = 2;
     public float spawnCountdownUI;
-    public StatsManager statsManagerScript;
+    [Space(1)]
+    [Header("Particle Effects")]
+    public GameObject spawnStarting;
+
     void Start()
     {
         Invoke("FirstSpawn", 1f);
@@ -59,7 +69,6 @@ public class Spawner : MonoBehaviour
             RandomSpawnGenerator();
             Instantiate(spawnStarting, randomSpawnPoint, this.transform.rotation);
             Invoke("Spawn", spawnWarningTime);
-            //int enemyPicker = Random.Range(0, 100);
         }
 
     }
