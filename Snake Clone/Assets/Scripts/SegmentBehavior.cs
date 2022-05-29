@@ -33,7 +33,6 @@ public class SegmentBehavior : MonoBehaviour
     {
         if (other.tag == "Enemy" || other.tag == "Obstacle")
         {
-            Debug.Log("Hit enemy, obstacle");
             snakeScript.DieThenChooseSpawn();
         }
     }

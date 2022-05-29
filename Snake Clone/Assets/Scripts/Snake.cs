@@ -65,8 +65,6 @@ public class Snake : MonoBehaviour
             currentMousePosition = mouseWorldPosition;
         }
 
-        Debug.Log("spawn: " + invulnerableSpawn);
-
         if (Input.GetKeyDown(KeyCode.W) && _direction != Vector2.down)
         {
             _direction = Vector2.up;
@@ -143,7 +141,6 @@ public class Snake : MonoBehaviour
         choseSpawnLocation = true;
         invulnerableSpawn = true;
         statsManagerScript.pauseTimer = false;
-        Debug.Log("Choose spawn - Called");
 
         this.transform.position = currentMousePosition;
         _segments.Add(this.transform);
@@ -189,13 +186,11 @@ public class Snake : MonoBehaviour
         else if (other.tag == "Obstacle" || other.tag == "Enemy" || other.tag == "Enemy Projectile")
         {
             DieThenChooseSpawn();
-            Debug.Log("Snake hit obstacle: " + other.tag);
 
         }
         else if (other.tag == "SnakeBody" && invulnerableSpawn == false)
         {
             DieThenChooseSpawn();
-            Debug.Log("Snake hit obstacle: " + other.tag);
         }
     }
     public void DestroySegments(int segDestroyAmount)

@@ -55,7 +55,7 @@ public class StatsManager : MonoBehaviour
         if (spawnIncreaseTimer <= 0)
         {
             SpawnerScript.maxEnemies += 1;
-            Debug.Log("Enemy max is: " + SpawnerScript.maxEnemies);
+            //Debug.Log("Enemy max is: " + SpawnerScript.maxEnemies);
             spawnIncreaseTimer = spawnIncreaseTimeDefault;
         }
         scoreCounter.text = totalScore.ToString();

@@ -70,6 +70,33 @@ public class PorcupineEnemy : MonoBehaviour
 
     void Update()
     {
+        LayerMask boundsMask = LayerMask.GetMask("Bounds");
+        //Raycast that finds the object "Bounds" whenever it is in front of the enemy, and returns "true" if it is within range
+        RaycastHit2D boundsInFront = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 6f, boundsMask);
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.right) * 6f, Color.red);
+
+        if (boundsInFront)
+        {
+            Debug.Log("Enemy saved by Raycast Hitting Bounds");
+            if (_direction == Vector2.left)
+            {
+                TurnRight();
+            }
+            else if (_direction == Vector2.right)
+            {
+                TurnLeft();
+            }
+            else if (_direction == Vector2.up)
+            {
+                TurnDownForWhat();
+            }
+            else if (_direction == Vector2.down)
+            {
+                TurnUp();
+            }
+        }
+
+
         if (triggerCounter > 0)
         {
             triggerCounter -= Time.deltaTime;
@@ -142,7 +169,6 @@ public class PorcupineEnemy : MonoBehaviour
     {
         if (other.tag == "Obstacle" || other.tag == "Enemy" || other.tag == "Enemy Obstacle")
         {
-            Debug.Log("Hit trigger");
             if (_direction == Vector2.left && triggerCounter <= 0)
             {
                 TurnRight();
@@ -174,7 +200,7 @@ public class PorcupineEnemy : MonoBehaviour
         }
         if (other.tag == "Bounds")
         {
-            Debug.Log("Enemy went past bounds");
+            Debug.Log("Porcupine hit Bounds and had to respawn");
             Destroy(gameObject);
             if (spawnScript.currentEnemyCount! >= spawnScript.maxEnemies)
             {
