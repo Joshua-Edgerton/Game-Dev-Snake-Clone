@@ -10,6 +10,7 @@ public class Snake : MonoBehaviour
     public Vector3 currentMousePosition;
     public GameObject aim;
     public GameObject crosshair;
+    public GameObject crosshairWhenChoosingSpawn;
     [Space(1)]
     [Header("Script Links")]
     public Abilities abilitiesScript;
@@ -52,9 +53,13 @@ public class Snake : MonoBehaviour
         //Mouse position info
         Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPosition.z = 0f;
-        //Makes the "aim" game object look towards the mouse position
-        aim.transform.right = mouseWorldPosition - transform.position;
-        currentMousePosition = mouseWorldPosition;
+        //Makes the "aim" game object look towards the mouse position if the game is not paused
+        if (statsManagerScript.gamePaused == false)
+        {
+            aim.transform.right = mouseWorldPosition - transform.position;
+            currentMousePosition = mouseWorldPosition;
+        }
+
         Debug.Log("spawn: " + invulnerableSpawn);
 
         if (Input.GetKeyDown(KeyCode.W) && _direction != Vector2.down)
@@ -73,11 +78,11 @@ public class Snake : MonoBehaviour
         {
             _direction = Vector2.right;
         }
-        if (Input.GetMouseButtonDown(0) && segmentTotal > 1)
+        if (Input.GetMouseButtonDown(0) && segmentTotal > 1 && statsManagerScript.gamePaused == false)
         {
             abilitiesScript.PlayAbility();
         }
-        if (Input.GetMouseButtonDown(0) && choseSpawnLocation == false && this.gameObject.transform.localScale.x != 1)
+        if (Input.GetMouseButtonDown(0) && choseSpawnLocation == false && this.gameObject.transform.localScale.x != 1 && statsManagerScript.gamePaused == false)
         {
             ChooseSpawn();
         }
@@ -125,6 +130,8 @@ public class Snake : MonoBehaviour
         _segments.Clear();
         this.gameObject.transform.localScale = new Vector3(0, 0, 0);
         invulnerableSpawn = true;
+        crosshair.gameObject.SetActive(false);
+        crosshairWhenChoosingSpawn.SetActive(true);
     }
     public void ChooseSpawn()
     {
@@ -141,6 +148,8 @@ public class Snake : MonoBehaviour
         }
         this.gameObject.transform.localScale = new Vector3(1, 1, 1);
         Uninvulnerable();
+        crosshair.gameObject.SetActive(true);
+        crosshairWhenChoosingSpawn.SetActive(false);
     }
 
     private void Grow(int superAmount)
