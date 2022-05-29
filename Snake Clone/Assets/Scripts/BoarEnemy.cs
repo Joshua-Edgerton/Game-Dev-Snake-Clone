@@ -66,11 +66,37 @@ public class BoarEnemy : MonoBehaviour
 
     void Update()
     {
+        LayerMask boundsMask = LayerMask.GetMask("Bounds");
+        //Raycast that finds the object "Bounds" whenever it is in front of the enemy, and returns "true" if it is within range
+        RaycastHit2D boundsInFront = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 7f, boundsMask);
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.right) * 7f, Color.red);
+
+        if (boundsInFront)
+        {
+            Debug.Log("Enemy saved by Raycast Hitting Bounds");
+            if (_direction == Vector2.left)
+            {
+                TurnRight();
+            }
+            else if (_direction == Vector2.right)
+            {
+                TurnLeft();
+            }
+            else if (_direction == Vector2.up)
+            {
+                TurnDownForWhat();
+            }
+            else if (_direction == Vector2.down)
+            {
+                TurnUp();
+            }
+        }
         //Layer Mask that is used in unison with Raycast2D to find a specific layer
         LayerMask snakeMask = LayerMask.GetMask("SnakeHead");
         //Raycast that finds the object "SnakeHead" whenever it is to the left or right of the boar, and returns "true" if it is
         RaycastHit2D hitUp = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.up), 30f, snakeMask);
         RaycastHit2D hitDown = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.down), 30f, snakeMask);
+        //Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.right) * 10f, Color.red);
 
         //If statement that lets the healthbar script know if this character is sideways or not, to adjust for health bar height
         if (_direction == Vector2.left || _direction == Vector2.right)
@@ -147,7 +173,6 @@ public class BoarEnemy : MonoBehaviour
             }
             else
             {
-                Debug.Log("boar collided with obstacle or enemy");
                 TurnAround();
             }
         }
@@ -162,7 +187,7 @@ public class BoarEnemy : MonoBehaviour
         //This kills the enemy and spawns another one if it happens to cross the outer limits with the tag "Bounds"
         if (other.tag == "Bounds")
         {
-            Debug.Log("Enemy went past bounds");
+            Debug.Log("Boar hit Bounds and had to respawn");
             Destroy(gameObject);
             if (spawnScript.currentEnemyCount! >= spawnScript.maxEnemies)
             {
@@ -201,25 +226,21 @@ public class BoarEnemy : MonoBehaviour
     {
         this.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         _direction = Vector2.right;
-        Debug.Log("Turned Right");
     }
     private void TurnLeft()
     {
         this.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
         _direction = Vector2.left;
-        Debug.Log("Turned Left");
     }
     private void TurnUp()
     {
         this.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
         _direction = Vector2.up;
-        Debug.Log("Turned Up");
     }
     private void TurnDownForWhat()
     {
         this.transform.rotation = Quaternion.Euler(0f, 0f, -90f);
         _direction = Vector2.down;
-        Debug.Log("Turned Down");
     }
     //Pauses and then invokes the charge attack towards the snake after passing it a certain amount of times
     public void ChargeLeft()

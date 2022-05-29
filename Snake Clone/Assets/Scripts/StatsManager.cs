@@ -12,6 +12,9 @@ public class StatsManager : MonoBehaviour
     public Text spawnCounter;
     public GameObject spawnCounterUI;
     [Space(1)]
+    [Header("Script Links")]
+    public Spawner SpawnerScript;
+    [Space(1)]
     [Header("Lists")]
     public List<Transform> _lives = new List<Transform>();
     [Space(1)]
@@ -29,6 +32,8 @@ public class StatsManager : MonoBehaviour
     public int numberOfMinutes;
     public bool pauseTimer = false;
     public bool gamePaused = false;
+    public float spawnIncreaseTimeDefault;
+    public float spawnIncreaseTimer;
     [Space(1)]
     [Header("Total Stats")]
     public int totalExp;
@@ -39,12 +44,23 @@ public class StatsManager : MonoBehaviour
         currentLives = startingLives;
         ResetLives();
         levelLengthCounter = levelLength;
+        spawnIncreaseTimer = spawnIncreaseTimeDefault;
+        SpawnerScript = GameObject.Find("Enemy Manager").GetComponent<Spawner>();
     }
 
     void Update()
     {
+        spawnIncreaseTimer -= Time.deltaTime;
+
+        if (spawnIncreaseTimer <= 0)
+        {
+            SpawnerScript.maxEnemies += 1;
+            //Debug.Log("Enemy max is: " + SpawnerScript.maxEnemies);
+            spawnIncreaseTimer = spawnIncreaseTimeDefault;
+        }
         scoreCounter.text = totalScore.ToString();
         expCounter.text = totalExp.ToString();
+
         if (!pauseTimer)
         {
             levelLengthCounter -= Time.deltaTime;

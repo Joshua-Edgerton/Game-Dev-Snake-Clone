@@ -67,6 +67,32 @@ public class TurtleEnemy : MonoBehaviour
     }
     void Update()
     {
+        LayerMask boundsMask = LayerMask.GetMask("Bounds");
+        //Raycast that finds the object "Bounds" whenever it is in front of the enemy, and returns "true" if it is within range
+        RaycastHit2D boundsInFront = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.left), 4f, boundsMask);
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.left) * 4f, Color.red);
+
+        if (boundsInFront)
+        {
+            Debug.Log("Enemy saved by Raycast Hitting Bounds");
+            if (_direction == Vector2.left)
+            {
+                TurnRight();
+            }
+            else if (_direction == Vector2.right)
+            {
+                TurnLeft();
+            }
+            else if (_direction == Vector2.up)
+            {
+                TurnDownForWhat();
+            }
+            else if (_direction == Vector2.down)
+            {
+                TurnUp();
+            }
+        }
+
         if (randomDirectionCounter > 0)
         {
             randomDirectionCounter -= Time.deltaTime;
@@ -176,6 +202,7 @@ public class TurtleEnemy : MonoBehaviour
         }
         if (other.tag == "Bounds")
         {
+            Debug.Log("Turtle hit Bounds and had to respawn");
             Destroy(gameObject);
             if (spawnScript.currentEnemyCount! >= spawnScript.maxEnemies)
             {
