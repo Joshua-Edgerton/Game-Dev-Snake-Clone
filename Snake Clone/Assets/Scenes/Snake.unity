@@ -176,7 +176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &121151053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2122,7 +2122,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.18932134, g: 0.9150943, b: 0, a: 1}
   m_FlipX: 0
@@ -2334,6 +2334,7 @@ MonoBehaviour:
   expCounter: {fileID: 2025490042}
   spawnCounter: {fileID: 1666202063}
   spawnCounterUI: {fileID: 1091968449}
+  SpawnerScript: {fileID: 0}
   _lives:
   - {fileID: 82602659}
   - {fileID: 745724910}
@@ -2356,6 +2357,8 @@ MonoBehaviour:
   numberOfMinutes: 0
   pauseTimer: 0
   gamePaused: 0
+  spawnIncreaseTimeDefault: 30
+  spawnIncreaseTimer: 0
   totalExp: 0
   totalScore: 0
 --- !u!1001 &1158676387
@@ -4490,8 +4493,10 @@ MonoBehaviour:
   statsManagerScript: {fileID: 1096749703}
   spawnArea: {fileID: 1083911494}
   _enemies:
+  - {fileID: 2342311449559490471, guid: 4af450f60df21194db8e351ac1601308, type: 3}
+  - {fileID: 2507408931795120501, guid: b5e5b29af2f1fd944ac202f37aad90da, type: 3}
   - {fileID: 7072030817544867537, guid: 50a7ea1eb7b2c444791b0156f8bec7c5, type: 3}
-  maxEnemies: 3
+  maxEnemies: 1
   currentEnemyCount: 0
   enemySpawnTimer: 10
   randomSpawnPoint: {x: 0, y: 0, z: 0}
@@ -4626,7 +4631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1866701222
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10800,7 +10805,7 @@ GameObject:
   - component: {fileID: 1043757834949186569}
   - component: {fileID: 5735711420777889743}
   m_Layer: 0
-  m_Name: Super Effect
+  m_Name: Spawn Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

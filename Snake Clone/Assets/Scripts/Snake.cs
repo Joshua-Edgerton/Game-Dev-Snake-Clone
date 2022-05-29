@@ -47,9 +47,14 @@ public class Snake : MonoBehaviour
     private void Update()
     {
         //Segment info
-        segmentDisplay = (_segments.Count - 1).ToString();
         statsManagerScript.segmentCounter.text = segmentDisplay;
         segmentTotal = (_segments.Count - 1);
+        if (choseSpawnLocation == false)
+        {
+            segmentDisplay = (_segments.Count).ToString();
+        } else {
+            segmentDisplay = (_segments.Count - 1).ToString();
+        }
         //Mouse position info
         Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPosition.z = 0f;
