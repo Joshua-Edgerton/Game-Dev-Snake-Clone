@@ -15,6 +15,7 @@ public class Snake : MonoBehaviour
     [Header("Script Links")]
     public Abilities abilitiesScript;
     public StatsManager statsManagerScript;
+    public PersistentData persistentDataScript;
     [Space(1)]
     [Header("Game Objects and Transforms")]
     public Transform segmentPrefab;
@@ -27,6 +28,7 @@ public class Snake : MonoBehaviour
     [Header("Spawn Variables")]
     public bool choseSpawnLocation = true;
     public bool invulnerableSpawn = false;
+    public BoxCollider2D gridArea;
     [Space(1)]
     [Header("Lists")]
     private List<Transform> _segments = new List<Transform>();
@@ -42,10 +44,15 @@ public class Snake : MonoBehaviour
         //Finds the script "Abilities" attached to the gameobject called "Snake"
         abilitiesScript = GameObject.Find("Snake").GetComponent<Abilities>();
         statsManagerScript = GameObject.Find("Level Manager").GetComponent<StatsManager>();
+        persistentDataScript = GameObject.Find("Persistent Data").GetComponent<PersistentData>();
     }
 
     private void Update()
     {
+        //Bounds bounds = this.gridArea.bounds;
+        //Debug.Log(currentMousePosition.x);
+        //Debug.Log(bounds.min.x);
+
         //Segment info
         statsManagerScript.segmentCounter.text = segmentDisplay;
         segmentTotal = (_segments.Count - 1);
@@ -87,7 +94,17 @@ public class Snake : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0) && choseSpawnLocation == false && this.gameObject.transform.localScale.x != 1 && statsManagerScript.gamePaused == false)
         {
-            ChooseSpawn();
+            Bounds bounds = this.gridArea.bounds;
+            float mouseX = currentMousePosition.x;
+            float mouseY = currentMousePosition.y;
+
+            if (mouseX > bounds.min.x && mouseX < bounds.max.x && mouseY > bounds.min.y && mouseY < bounds.max.y)
+            {
+                ChooseSpawn();
+            } else 
+            {
+                //Play a sound here for trying to spawn outside of the bounds
+            }
         }
     }
 
@@ -141,6 +158,7 @@ public class Snake : MonoBehaviour
         choseSpawnLocation = true;
         invulnerableSpawn = true;
         statsManagerScript.pauseTimer = false;
+
 
         this.transform.position = currentMousePosition;
         _segments.Add(this.transform);
@@ -200,6 +218,10 @@ public class Snake : MonoBehaviour
             Destroy(_segments[_segments.Count - 1].gameObject);
             _segments.RemoveAt(_segments.Count - 1);
         }
+    }
+    public void UpdatePersistentData()
+    {
+        persistentDataScript.startingSegmentSize = initialSize;
     }
 
 }

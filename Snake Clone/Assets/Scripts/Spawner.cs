@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
 {
     [Header("Script Links")]
     public StatsManager statsManagerScript;
+    public PersistentData persistentDataScript;
     [Space(1)]
     [Header("Bounds")]
     public BoxCollider2D spawnArea;
@@ -31,6 +32,7 @@ public class Spawner : MonoBehaviour
         countDownTimer = enemySpawnTimer;
         spawnCountdownUI = enemySpawnTimer;
         statsManagerScript = GameObject.Find("Level Manager").GetComponent<StatsManager>();
+        persistentDataScript = GameObject.Find("Persistent Data").GetComponent<PersistentData>();
     }
 
     void Update()
@@ -82,5 +84,9 @@ public class Spawner : MonoBehaviour
     {
         int randomEnemy = Random.Range(0, _enemies.Count);
         Instantiate(_enemies[randomEnemy], randomSpawnPoint, this.transform.rotation);
+    }
+    public void UpdatePersistentData()
+    {
+        //persistentDataScript.maxEnemies
     }
 }

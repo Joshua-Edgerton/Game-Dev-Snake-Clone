@@ -2,19 +2,21 @@ using UnityEngine;
 
 public class Food : MonoBehaviour
 {
+    public PersistentData persistentDataScript;
     [Header("Bounds")]
     public BoxCollider2D gridArea;
     [Space(1)]
     [Header("SuperFood Variables")]
     public bool isSuper = false;
     [Range(1, 100)]
-    public int superChance = 50;
+    public int superChance;
     [Space(1)]
     [Header("Particle Effects")]
     public ParticleSystem superEffect;
 
     private void Start()
     {
+        persistentDataScript = GameObject.Find("Persistent Data").GetComponent<PersistentData>();
         RandomizePosition();
     }
 
@@ -55,8 +57,14 @@ public class Food : MonoBehaviour
     {
         this.tag = "SuperFood";
     }
+
     private void ChangeFoodNormal()
     {
         this.tag = "Food";
+    }
+
+    public void UpdatePersistentData()
+    {
+        persistentDataScript.superFoodChance = superChance;
     }
 }

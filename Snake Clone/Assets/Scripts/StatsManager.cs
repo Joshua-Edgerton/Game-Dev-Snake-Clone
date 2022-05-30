@@ -10,10 +10,13 @@ public class StatsManager : MonoBehaviour
     public Text scoreCounter;
     public Text expCounter;
     public Text spawnCounter;
+    public Text maxEnemiesUI;
     public GameObject spawnCounterUI;
+    public GameObject victory;
     [Space(1)]
     [Header("Script Links")]
     public Spawner SpawnerScript;
+    public PersistentData persistentDataScript;
     [Space(1)]
     [Header("Lists")]
     public List<Transform> _lives = new List<Transform>();
@@ -26,7 +29,7 @@ public class StatsManager : MonoBehaviour
     public int currentLives;
     [Space(1)]
     [Header("Level Adjustments")]
-    public int levelLength = 120;
+    public int levelLength = 30;
     public float levelLengthCounter;
     public Text levelLengthUI;
     public int numberOfMinutes;
@@ -34,6 +37,7 @@ public class StatsManager : MonoBehaviour
     public bool gamePaused = false;
     public float spawnIncreaseTimeDefault;
     public float spawnIncreaseTimer;
+    public bool hasWonLevel = false;
     [Space(1)]
     [Header("Total Stats")]
     public int totalExp;
@@ -46,10 +50,17 @@ public class StatsManager : MonoBehaviour
         levelLengthCounter = levelLength;
         spawnIncreaseTimer = spawnIncreaseTimeDefault;
         SpawnerScript = GameObject.Find("Enemy Manager").GetComponent<Spawner>();
+        persistentDataScript = GameObject.Find("Persistent Data").GetComponent<PersistentData>();
     }
 
     void Update()
     {
+        if (levelLengthCounter <= 0 && currentLives > 0 && hasWonLevel == false)
+        {
+            Victory();
+            hasWonLevel = true;
+        }
+
         spawnIncreaseTimer -= Time.deltaTime;
 
         if (spawnIncreaseTimer <= 0)
@@ -58,8 +69,10 @@ public class StatsManager : MonoBehaviour
             //Debug.Log("Enemy max is: " + SpawnerScript.maxEnemies);
             spawnIncreaseTimer = spawnIncreaseTimeDefault;
         }
+
         scoreCounter.text = totalScore.ToString();
         expCounter.text = totalExp.ToString();
+        maxEnemiesUI.text = SpawnerScript.maxEnemies.ToString();
 
         if (!pauseTimer)
         {
@@ -126,8 +139,25 @@ public class StatsManager : MonoBehaviour
         }
     }
 
+    public void Victory()
+    {
+        victory.SetActive(true);
+        persistentDataScript.UpdatePersistentData();
+        persistentDataScript.CallNextSceneTimed();
+        //PauseGame();
+    }
+
     public void GameOver()
     {
 
+    }
+
+    public void UpdatePersistentData()
+    {
+        persistentDataScript.currentLives = currentLives;
+        persistentDataScript.maxLives = maxLives;
+        persistentDataScript.totalExp += totalExp;
+        persistentDataScript.totalScore += totalScore;
+        persistentDataScript.levelLength = levelLength;
     }
 }

@@ -6,6 +6,7 @@ public class Abilities : MonoBehaviour
 {
     [Header("Script Links")]
     public Snake snakeScript;
+    public PersistentData persistentDataScript;
     [Space(1)]
     [Header("Game Objects")]
     public GameObject venomBall;
@@ -17,6 +18,7 @@ public class Abilities : MonoBehaviour
     private void Start()
     {
         snakeScript = GameObject.Find("Snake").GetComponent<Snake>();
+        persistentDataScript = GameObject.Find("Persistent Data").GetComponent<PersistentData>();
     }
     public void PlayAbility()
     {
@@ -29,5 +31,10 @@ public class Abilities : MonoBehaviour
     public void VenomSpit()
     {
         Instantiate(venomBall, snakeScript.aim.transform.position, snakeScript.aim.transform.rotation);
+    }
+
+    public void UpdatePersistentData()
+    {
+        //Add all abilities gained to persistent data list
     }
 }
