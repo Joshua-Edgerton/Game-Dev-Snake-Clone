@@ -2646,6 +2646,7 @@ MonoBehaviour:
   gamePaused: 0
   spawnIncreaseTimeDefault: 60
   spawnIncreaseTimer: 0
+  hasWonLevel: 0
   totalExp: 0
   totalScore: 0
 --- !u!1 &1114617784
@@ -3733,16 +3734,20 @@ MonoBehaviour:
   startingSegmentSize: 0
   spawnIncreaseTimer: 0
   superFoodChance: 0
-  highScoreLevel01: 0
-  highScoreLevel02: 0
-  highScoreLevel03: 0
-  highScoreLevel04: 0
-  highScoreLevel05: 0
   abilitiesScript: {fileID: 0}
   foodScript: {fileID: 0}
   spawnerScript: {fileID: 0}
   statsManagerScript: {fileID: 0}
   snakeScript: {fileID: 0}
+  _sceneNames:
+  - Level01
+  - Level02
+  - Level03
+  - Level04
+  - Level05
+  currentLevel: 1
+  _levelHighScores: 
+  _setHighScores: 0000000000000000000000000000000000000000
 --- !u!1 &1360998951
 GameObject:
   m_ObjectHideFlags: 0

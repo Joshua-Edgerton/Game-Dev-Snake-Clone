@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StatsManager : MonoBehaviour
 {
@@ -43,6 +44,11 @@ public class StatsManager : MonoBehaviour
     public int totalExp;
     public int totalScore;
 
+    private void Awake()
+    {
+        //persistentDataScript.ReconnectScripts();
+    }
+
     void Start()
     {
         currentLives = startingLives;
@@ -51,6 +57,7 @@ public class StatsManager : MonoBehaviour
         spawnIncreaseTimer = spawnIncreaseTimeDefault;
         SpawnerScript = GameObject.Find("Enemy Manager").GetComponent<Spawner>();
         persistentDataScript = GameObject.Find("Persistent Data").GetComponent<PersistentData>();
+        persistentDataScript.ReconnectScripts();
     }
 
     void Update()
@@ -143,7 +150,7 @@ public class StatsManager : MonoBehaviour
     {
         victory.SetActive(true);
         persistentDataScript.UpdatePersistentData();
-        persistentDataScript.CallNextSceneTimed();
+        persistentDataScript.CallUpgradeSceneTimed();
         //PauseGame();
     }
 
@@ -159,5 +166,7 @@ public class StatsManager : MonoBehaviour
         persistentDataScript.totalExp += totalExp;
         persistentDataScript.totalScore += totalScore;
         persistentDataScript.levelLength = levelLength;
+        persistentDataScript._levelHighScores.Add(totalScore);
+        
     }
 }
