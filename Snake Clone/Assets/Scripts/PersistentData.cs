@@ -42,11 +42,11 @@ public class PersistentData : MonoBehaviour
         
         Time.timeScale = 1;
         DontDestroyOnLoad(gameObject);
-        snakeScript = GameObject.Find("Snake").GetComponent<Snake>();
-        abilitiesScript = GameObject.Find("Snake").GetComponent<Abilities>();
-        foodScript = GameObject.Find("Food").GetComponent<Food>();
-        spawnerScript = GameObject.Find("Enemy Manager").GetComponent<Spawner>();
-        statsManagerScript = GameObject.Find("Level Manager").GetComponent<StatsManager>();
+        //snakeScript = GameObject.Find("Snake").GetComponent<Snake>();
+        //abilitiesScript = GameObject.Find("Snake").GetComponent<Abilities>();
+        //foodScript = GameObject.Find("Food").GetComponent<Food>();
+        //spawnerScript = GameObject.Find("Enemy Manager").GetComponent<Spawner>();
+        //statsManagerScript = GameObject.Find("Level Manager").GetComponent<StatsManager>();
 
     }
 
