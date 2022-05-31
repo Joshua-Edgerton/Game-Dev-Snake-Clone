@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 3874543}
   - component: {fileID: 3874545}
   - component: {fileID: 3874544}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Image (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 18046141}
   - component: {fileID: 18046142}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,6 +230,7 @@ RectTransform:
   - {fileID: 816524619}
   - {fileID: 287734523}
   - {fileID: 434961549}
+  - {fileID: 2015711474}
   m_Father: {fileID: 887739986}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -261,7 +262,7 @@ GameObject:
   - component: {fileID: 73440413}
   - component: {fileID: 73440415}
   - component: {fileID: 73440414}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Image (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +337,7 @@ GameObject:
   - component: {fileID: 98990620}
   - component: {fileID: 98990622}
   - component: {fileID: 98990621}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Image (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -411,7 +412,7 @@ GameObject:
   - component: {fileID: 143813154}
   - component: {fileID: 143813156}
   - component: {fileID: 143813155}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,7 +546,7 @@ GameObject:
   - component: {fileID: 201105487}
   - component: {fileID: 201105489}
   - component: {fileID: 201105488}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Image (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -620,7 +621,7 @@ GameObject:
   - component: {fileID: 216496801}
   - component: {fileID: 216496803}
   - component: {fileID: 216496802}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -695,7 +696,7 @@ GameObject:
   - component: {fileID: 228849295}
   - component: {fileID: 228849297}
   - component: {fileID: 228849296}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Image (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -771,7 +772,7 @@ GameObject:
   - component: {fileID: 287734526}
   - component: {fileID: 287734525}
   - component: {fileID: 287734524}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Play
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -903,7 +904,7 @@ GameObject:
   - component: {fileID: 317120036}
   - component: {fileID: 317120038}
   - component: {fileID: 317120037}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Image (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -979,7 +980,7 @@ GameObject:
   - component: {fileID: 434961552}
   - component: {fileID: 434961551}
   - component: {fileID: 434961550}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1111,7 +1112,7 @@ GameObject:
   - component: {fileID: 535982090}
   - component: {fileID: 535982092}
   - component: {fileID: 535982091}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Image (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1186,7 +1187,7 @@ GameObject:
   - component: {fileID: 554680376}
   - component: {fileID: 554680378}
   - component: {fileID: 554680377}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Image (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1262,7 +1263,7 @@ GameObject:
   - component: {fileID: 671507582}
   - component: {fileID: 671507581}
   - component: {fileID: 671507580}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Spawn Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6080,7 +6081,7 @@ GameObject:
   - component: {fileID: 770840878}
   - component: {fileID: 770840880}
   - component: {fileID: 770840879}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Image (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6155,7 +6156,7 @@ GameObject:
   - component: {fileID: 777441118}
   - component: {fileID: 777441120}
   - component: {fileID: 777441119}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Image (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6230,7 +6231,7 @@ GameObject:
   - component: {fileID: 816524619}
   - component: {fileID: 816524621}
   - component: {fileID: 816524620}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6306,7 +6307,7 @@ GameObject:
   - component: {fileID: 867683376}
   - component: {fileID: 867683378}
   - component: {fileID: 867683377}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Image (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6448,7 +6449,7 @@ GameObject:
   - component: {fileID: 887739985}
   - component: {fileID: 887739984}
   - component: {fileID: 887739983}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6494,7 +6495,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &887739985
 Canvas:
   m_ObjectHideFlags: 0
@@ -6504,7 +6505,7 @@ Canvas:
   m_GameObject: {fileID: 887739982}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 2
   m_Camera: {fileID: 1907402335}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -6514,7 +6515,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_TargetDisplay: 0
 --- !u!224 &887739986
 RectTransform:
@@ -6524,19 +6525,18 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 887739982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -100.00795}
+  m_LocalScale: {x: 0.011325029, y: 0.011325029, z: 0.011325029}
   m_Children:
   - {fileID: 18046141}
-  - {fileID: 2015711474}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_SizeDelta: {x: 1308, y: 882.99994}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &900822442
 GameObject:
   m_ObjectHideFlags: 0
@@ -6548,7 +6548,7 @@ GameObject:
   - component: {fileID: 900822443}
   - component: {fileID: 900822445}
   - component: {fileID: 900822444}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Image (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6623,7 +6623,7 @@ GameObject:
   - component: {fileID: 908043459}
   - component: {fileID: 908043461}
   - component: {fileID: 908043460}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6840,7 +6840,7 @@ GameObject:
   - component: {fileID: 1514591716}
   - component: {fileID: 1514591718}
   - component: {fileID: 1514591717}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Image (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6913,7 +6913,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1543435729}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Snake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6966,7 +6966,7 @@ GameObject:
   - component: {fileID: 1554996661}
   - component: {fileID: 1554996663}
   - component: {fileID: 1554996662}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Image (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7078,7 +7078,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 16384
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -7098,7 +7098,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907402333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 819.32794, y: 419.2409, z: -200.00795}
+  m_LocalPosition: {x: 0, y: 0, z: -200.00795}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7115,7 +7115,7 @@ GameObject:
   - component: {fileID: 2015711474}
   - component: {fileID: 2015711476}
   - component: {fileID: 2015711475}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Crosshair for Spawning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7130,12 +7130,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2015711473}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -64384.367, y: -36091.34, z: 8650.687}
-  m_LocalScale: {x: 20, y: 20, z: 86.5}
+  m_LocalPosition: {x: -64384.37, y: -36091.344, z: 8650.6875}
+  m_LocalScale: {x: 20, y: 20, z: 86.50001}
   m_Children:
   - {fileID: 671507579}
-  m_Father: {fileID: 887739986}
-  m_RootOrder: 1
+  m_Father: {fileID: 18046141}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2015711475
 SpriteRenderer:
@@ -7214,7 +7214,7 @@ GameObject:
   - component: {fileID: 2048127967}
   - component: {fileID: 2048127969}
   - component: {fileID: 2048127968}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Image (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7289,7 +7289,7 @@ GameObject:
   - component: {fileID: 3663746825620908995}
   - component: {fileID: 6046587697149014355}
   - component: {fileID: 5325431083516931407}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Super Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7350,7 +7350,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 222
+  m_SortingOrder: -5
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
