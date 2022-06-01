@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Upgrade.unity
     guid: 97c76771a03df5242827828af315ebf0
   - enabled: 1
+    path: Assets/Scenes/Replay.unity
+    guid: 4fd43e5b3934ab446a8ab033a314cced
+  - enabled: 1
     path: Assets/Scenes/Level01.unity
     guid: fcb3cf55fd8d17349b967ebce206e843
   - enabled: 1
