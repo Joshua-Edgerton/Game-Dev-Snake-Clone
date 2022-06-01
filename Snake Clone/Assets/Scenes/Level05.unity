@@ -2638,7 +2638,7 @@ MonoBehaviour:
   startingLives: 3
   maxLives: 3
   currentLives: 0
-  levelLength: 10
+  levelLength: 60
   levelLengthCounter: 0
   levelLengthUI: {fileID: 378226449}
   numberOfMinutes: 0
