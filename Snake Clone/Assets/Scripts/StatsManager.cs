@@ -28,6 +28,7 @@ public class StatsManager : MonoBehaviour
     public int startingLives = 3;
     public int maxLives = 3;
     public int currentLives;
+    public bool isInvincible = false;
     [Space(1)]
     [Header("Level Adjustments")]
     public int levelLength = 30;
@@ -124,8 +125,12 @@ public class StatsManager : MonoBehaviour
 
     public void LostLife()
     {
-        currentLives -= 1;
-        ResetLives();
+        if (isInvincible == false)
+        {
+            currentLives -= 1;
+            ResetLives();
+            Debug.Log("LOST LIFE");
+        }
     }
 
     public void ResetLives()
@@ -156,8 +161,10 @@ public class StatsManager : MonoBehaviour
 
     public void Victory()
     {
+        isInvincible = true;
         victory.SetActive(true);
         persistentDataScript.UpdatePersistentData();
+        persistentDataScript.PermanentHighScoreSet();
         persistentDataScript.CallUpgradeSceneTimed();
         //PauseGame();
     }
