@@ -15,12 +15,14 @@ public class PersistentData : MonoBehaviour
     public int startingSegmentSize;
     public float spawnIncreaseTimer;
     public int superFoodChance;
+    public bool hasDied = false;
     [Header("Script Links")]
     public Abilities abilitiesScript;
     public Food foodScript;
     public Spawner spawnerScript;
     public StatsManager statsManagerScript;
     public Snake snakeScript;
+    public ReplayMenu replayMenuScript;
     [Header("Scene Name List")]
     public List<string> _sceneNames = new List<string>();
     public int currentLevel = 1;
@@ -42,11 +44,13 @@ public class PersistentData : MonoBehaviour
         
         Time.timeScale = 1;
         DontDestroyOnLoad(gameObject);
-        snakeScript = GameObject.Find("Snake").GetComponent<Snake>();
-        abilitiesScript = GameObject.Find("Snake").GetComponent<Abilities>();
-        foodScript = GameObject.Find("Food").GetComponent<Food>();
-        spawnerScript = GameObject.Find("Enemy Manager").GetComponent<Spawner>();
-        statsManagerScript = GameObject.Find("Level Manager").GetComponent<StatsManager>();
+        GetHighScores();
+        //snakeScript = GameObject.Find("Snake").GetComponent<Snake>();
+        //abilitiesScript = GameObject.Find("Snake").GetComponent<Abilities>();
+        //foodScript = GameObject.Find("Food").GetComponent<Food>();
+        //spawnerScript = GameObject.Find("Enemy Manager").GetComponent<Spawner>();
+        //statsManagerScript = GameObject.Find("Level Manager").GetComponent<StatsManager>();
+        //replayMenuScript = GameObject.Find("Replay Menu").GetComponent<ReplayMenu>();
 
     }
 
@@ -59,12 +63,24 @@ public class PersistentData : MonoBehaviour
             PermanentHighScoreSet();
             DebugLogSetHighScores();
         }
+
+        if (hasDied)
+        {
+            replayMenuScript = GameObject.Find("Replay Menu").GetComponent<ReplayMenu>();
+            replayMenuScript.youDied.SetActive(true);                
+        }
     }
 
     public void CallUpgradeScene()
     {
         SceneManager.LoadScene("Upgrade");
     }
+    public void CallReplayScene()
+    {
+        SceneManager.LoadScene("Replay");
+        //replayMenuScript.totalScore.text = totalScore.ToString();
+    }
+    
 
     
     public void CallUpgradeSceneTimed()
@@ -75,9 +91,16 @@ public class PersistentData : MonoBehaviour
 
     public void CallNextLevel()
     {
-        SceneManager.LoadScene(_sceneNames[currentLevel]);
-        currentLevel += 1;
-        Debug.Log(_sceneNames[currentLevel]);
+        if (currentLevel < _sceneNames.Count)
+        {
+            SceneManager.LoadScene(_sceneNames[currentLevel]);
+            currentLevel += 1;
+            Debug.Log(_sceneNames[currentLevel]);
+        } else
+        {
+            SceneManager.LoadScene("Replay");
+        }
+
     }
 
     public void CallLoseScene()
@@ -145,6 +168,32 @@ public class PersistentData : MonoBehaviour
                 _setHighScores[i] = _levelHighScores[i];
                 Debug.Log("Permanent High Score was replaced with new High Score");
             }
+        }
+    }
+
+    public void ReturnToMainMenu()
+    {
+        SaveHighScoreList();
+        SceneManager.LoadScene("Menu");
+        Destroy(gameObject);
+    }
+
+    public void SaveHighScoreList()
+    {
+        PlayerPrefs.SetInt("High_Scores_Count", _setHighScores.Count);
+
+        for (int i = 0; i < _setHighScores.Count; i++)
+        {
+            PlayerPrefs.SetInt("High_Scores" + i, _setHighScores[i]);
+        }
+        PlayerPrefs.Save();
+    }
+
+    public void GetHighScores()
+    {
+        for (int i = 0; i < _setHighScores.Count; i++)
+        {
+            _setHighScores[i] = PlayerPrefs.GetInt("High_Scores" + i);
         }
     }
 

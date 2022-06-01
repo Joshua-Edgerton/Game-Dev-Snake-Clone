@@ -62,6 +62,14 @@ public class StatsManager : MonoBehaviour
 
     void Update()
     {
+
+        if (currentLives <= 0)
+        {
+            persistentDataScript.hasDied = true;
+            persistentDataScript.UpdatePersistentData();
+            persistentDataScript.CallReplayScene();
+        }
+
         if (levelLengthCounter <= 0 && currentLives > 0 && hasWonLevel == false)
         {
             Victory();
