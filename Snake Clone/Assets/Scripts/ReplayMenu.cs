@@ -11,10 +11,19 @@ public class ReplayMenu : MonoBehaviour
     public GameObject needsWorkText;
     public Text totalScore;
 
+    public GameObject scoresMenu;
+    public GameObject replayMenu;
+    public List<Text> _scores;
+
     private void Start()
     {
         persistentDataScript = GameObject.Find("Persistent Data").GetComponent<PersistentData>();
         totalScore.text = persistentDataScript.totalScore.ToString();
+
+        for (int i = 0; i < persistentDataScript._setHighScores.Count; i++)
+        {
+            _scores[i].text = persistentDataScript._setHighScores[i].ToString();
+        }
     }
     private void Update()
     {
@@ -26,9 +35,16 @@ public class ReplayMenu : MonoBehaviour
         persistentDataScript.ReturnToMainMenu();
     }
 
-    public void CheckScores()
+    public void OpenScoresMenu()
     {
-        Debug.Log("Not set up yet - in replay menu script");
+        replayMenu.gameObject.SetActive(false);
+        scoresMenu.gameObject.SetActive(true);
+    }
+
+    public void OpenReplayMenu()
+    {
+        replayMenu.gameObject.SetActive(true);
+        scoresMenu.gameObject.SetActive(false);
     }
 
     public void QuitGame()
