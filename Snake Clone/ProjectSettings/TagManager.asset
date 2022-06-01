@@ -6,22 +6,29 @@ TagManager:
   tags:
   - Food
   - Obstacle
+  - SuperFood
+  - PlayerProjectile
+  - Enemy
+  - Enemy Obstacle
+  - Bounds
+  - EnemyProjectile
+  - SnakeBody
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - SnakeHead
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - SnakeBody
+  - PlayerProjectile
+  - EnemyProjectile
+  - Porcupine
+  - Bounds
+  - Boar
+  - EnemyWall
+  - Walls
+  - FrontUI
   - 
   - 
   - 
